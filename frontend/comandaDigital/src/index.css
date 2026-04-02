@@ -1,7 +1,9 @@
 :root {
-  --bg-color: #f0f0f0;
+  --bg-color: #ededed;
   --cor-fonte: #f2f2f2;
   --cor-fonte2: #af58d4;
+  --cor-fonte3: #31782d;
+  --cor-fonte4: #22631e;
 
   background-color: var(--bg-color);
 }
@@ -12,4 +14,20 @@
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   list-style: none;
+}
+
+.button-padrao{
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    color: #fff;
+    background-color: var(--cor-fonte3);
+    border: 1px solid var(--cor-fonte3);
+    cursor: pointer;
+    transition: .2s ease;
+    font-size: 1rem;
+}
+
+.button-padrao:hover{
+    border: 1px solid var(--cor-fonte4);
+    background-color: var(--cor-fonte4);
 }

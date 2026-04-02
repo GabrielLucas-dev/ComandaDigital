@@ -1,0 +1,104 @@
+.container-vendas{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    
+}
+
+.teste{
+    width: 81.6%;
+}
+
+.vendas-header{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vendas-header .header-title{
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;    
+}
+.vendas-header .header-title span{
+    color: var(--cor-fonte3);
+}
+
+.vendas-header .div-search{
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.vendas-header .div-search input{
+    padding: 0.5rem;
+    width: 280px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.vendas-header .div-search input:focus-visible{
+    border: 1px solid var(--cor-fonte3);
+}
+
+.middle-content{
+    display: flex;
+    height: 86%;
+}
+
+.sidebar-itens{
+    border-right: 1px solid #aaaaaa;
+    border-top: 1px solid #aaaaaa;
+    width: 200px;
+}
+
+.sidebar-itens .itens-list{
+    padding-top: 0.75rem;
+}
+
+.sidebar-itens .itens-list ul li{
+    margin: 0.75rem;
+    cursor: pointer;
+    padding: 4px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    transition: .1s ease;
+    font-weight: 600;
+}
+
+.sidebar-itens .itens-list ul li:hover{
+    border: 1px solid var(--cor-fonte3);
+    color: var(--cor-fonte3);
+}
+
+.vendas-content{
+    border-top: 1px solid #aaaaaa;
+    width: 100%;
+}
+
+.cart{
+    border-left: 1px solid #aaaaaa;
+    position: absolute;
+    right: 0;
+    width: 13.2%;
+    height: 100%;
+}   
+
+.cart h3{
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.confirm-order{
+    position: absolute;
+    bottom: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.confirm-order p{
+    padding-bottom: 8px;
+}
+
