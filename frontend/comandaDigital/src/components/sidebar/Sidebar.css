@@ -1,0 +1,44 @@
+.container-sidebar{
+    width: 110px;
+    height: 100vh;
+    border-right: 1px solid #aaaaaa;
+}
+
+.inner-title{
+    padding: 1rem 0.5rem;
+}
+
+.div-links{
+    width: 100%;
+    text-align: center;
+}
+
+.div-links ul{
+    padding: 0.25rem;
+}
+
+.div-links ul li{
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: .2s ease;
+    font-size: 1.4rem;
+}
+
+.div-links ul li:hover{
+    color: var(--cor-fonte2);
+}
+
+.div-infos{
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.div-infos ul li{
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.div-infos ul li:hover{
+    color: var(--cor-fonte2);
+}
