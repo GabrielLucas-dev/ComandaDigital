@@ -14,15 +14,15 @@ function Analises() {
           <div className="div-analises">
             <div className="analise">
               <h4>Total recebido</h4>
-              <p>total</p>
+              <p>R$: 1500,00</p>
             </div>
             <div className="analise">
               <h4>Numero de vendas</h4>
-              <p>vendas</p>
+              <p>150</p>
             </div>
             <div className="analise">
-              <h4>Ticket médio</h4>
-              <p>ticket</p>
+              <h4>Ticket médio:</h4>
+              <p>R$: 10,00</p>
             </div>
             <div className="analise">
               <h4>Grafico - Formas de pagamento</h4>

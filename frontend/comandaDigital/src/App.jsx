@@ -5,6 +5,7 @@ import Pdv from "./pages/pdv/Pdv"
 import Produtos from "./pages/produtos/Produtos"
 import Historico from './pages/historico/Historico'
 import Analises from './pages/analises/Analises'
+import FormProduto from "./pages/formProduto/FormProduto";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/produtos" element={<Produtos />}/>
           <Route path="/historico" element={<Historico />}/>
           <Route path="/analises" element={<Analises />}/>
+          <Route path="/formProduto" element={<FormProduto />}/>
         </Routes>
       </BrowserRouter>
     </>

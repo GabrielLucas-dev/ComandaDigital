@@ -19,7 +19,7 @@ function Historico() {
             </div>
             <div className="search-historico">
               <input type="date" className="date-historico" onChange={(e) => setDate(e.target.value)}/>
-              <input type="submit" className="button-padrao" />
+              <input type="submit" value="Procurar" className="button-padrao" />
             </div>
           </div>
           <div className="teste2">Historico (sera um map do banco de dados)</div>
