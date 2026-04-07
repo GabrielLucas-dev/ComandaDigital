@@ -6,6 +6,9 @@ import Produtos from "./pages/produtos/Produtos"
 import Historico from './pages/historico/Historico'
 import Analises from './pages/analises/Analises'
 import FormProduto from "./pages/formProduto/FormProduto";
+import AddProduto from "./pages/formProduto/produto/AddProduto";
+import AddCategoria from './pages/formProduto/categoria/AddCategoria'
+import AddComplemento from "./pages/formProduto/complemento/AddComplemento";
 
 function App() {
   return (
@@ -17,7 +20,12 @@ function App() {
           <Route path="/produtos" element={<Produtos />}/>
           <Route path="/historico" element={<Historico />}/>
           <Route path="/analises" element={<Analises />}/>
+          
           <Route path="/formProduto" element={<FormProduto />}/>
+          <Route path="/addProduto" element={<AddProduto />}/>
+          <Route path="/addCategoria" element={<AddCategoria />}/>
+          <Route path="/addComplemento" element={<AddComplemento />}/>
+
         </Routes>
       </BrowserRouter>
     </>

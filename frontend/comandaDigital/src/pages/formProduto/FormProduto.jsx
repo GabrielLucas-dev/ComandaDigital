@@ -14,9 +14,9 @@ function FormProduto() {
                 <h3>O que deseja <span>adicionar</span>?</h3>
                 <div className="categories">
                     <ul>
-                        <li><FontAwesomeIcon icon={faBoxOpen} /> Produto</li>
-                        <li><FontAwesomeIcon icon={faTag} /> Categoria</li>
-                        <li><FontAwesomeIcon icon={faListCheck} /> Complemento</li>
+                        <Link className="category-links" to="/addProduto"><FontAwesomeIcon icon={faBoxOpen} /> Produto</Link>
+                        <Link className="category-links" to="/addCategoria"><FontAwesomeIcon icon={faTag} /> Categoria</Link>
+                        <Link className="category-links" to="/addComplemento"><FontAwesomeIcon icon={faListCheck} /> Complemento</Link>
                     </ul>
                 </div>
             </div>

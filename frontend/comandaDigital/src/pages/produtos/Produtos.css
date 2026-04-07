@@ -17,7 +17,8 @@
 }
 
 .add-button{
-    margin-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .options-produtos{

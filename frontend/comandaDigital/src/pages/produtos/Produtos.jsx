@@ -3,18 +3,21 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./Produtos.css";
 
 function Produtos() {
-
   return (
     <>
       <section className="container-produtos">
         <Sidebar />
         <div className="inner-produtos">
           <div className="header-produtos">
-            <h2>
-              Listagem de <span>Produtos</span>
-            </h2>
+            <div>
+              <h2>
+                Listagem de <span>Produtos</span>
+              </h2>
+            </div>
             <div className="add-button">
-              <Link className="button-padrao" to="/formProduto">Adicionar +</Link>
+              <Link className="button-padrao" to="/formProduto">
+                Adicionar +
+              </Link>
             </div>
           </div>
           <div className="options-produtos">

@@ -32,8 +32,24 @@ function Vendas() {
             </div>
 
             <div className="vendas-content">
-              <p>vendas content</p>
+              <div className="vendas-layout">
+
+                <div className="card-venda">
+                  <p>Açaí 300ml</p>
+                  <h4>R$ 20,00</h4>
+                  <button className="button-padrao2">Adicionar ao carrinho</button>
+                </div>
+                <div className="card-venda">
+                  <p>Açaí 300ml</p>
+                  <h4>R$ 20,00</h4>
+                  <button className="button-padrao2">Adicionar ao carrinho</button>
+                </div>
+
+                
+
+              </div>
             </div>
+
           </div>
         </div>
 

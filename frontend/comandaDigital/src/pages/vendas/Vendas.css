@@ -102,3 +102,36 @@
     padding-bottom: 8px;
 }
 
+
+.vendas-content{
+    width: 100%;
+    height: 100%;
+}
+
+.vendas-layout{
+    display: flex;
+    margin: 1rem;
+    flex-wrap: wrap;
+}
+
+.card-venda{
+    border: 1px solid #aaaaaa;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+    margin: 1rem;
+}
+
+.card-venda h4{
+    font-size: 1.1rem;
+    padding: 0 0.25rem 0.25rem 0.25rem;
+}
+
+.card-venda p{
+    padding: 0.25rem;
+}
+
+.card-venda button{
+    margin-top: 0.25rem;
+}

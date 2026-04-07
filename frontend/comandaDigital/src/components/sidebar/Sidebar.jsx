@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faDollarSign, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { faClock, faChartBar } from '@fortawesome/free-regular-svg-icons'
 import comandaDigital from '../../assets/comandaDigital_icon.png'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function Sidebar() {
+
+  const getClass = ({isActive}) => isActive ? "links active" : "links"
+
   return (
     <>
       <section className="container-sidebar">
@@ -15,10 +18,10 @@ function Sidebar() {
         
         <div className="div-links">
           <ul>
-            <li><Link className="links" to="/vendas"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
-            <li><Link className="links" to="/produtos"><FontAwesomeIcon icon={faDollarSign} /></Link></li>
-            <li><Link className="links" to="/historico"><FontAwesomeIcon icon={faClock} /></Link></li>
-            <li><Link className="links" to="/analises"><FontAwesomeIcon icon={faChartBar} /></Link></li>
+            <li><NavLink className={getClass} to="/vendas"><FontAwesomeIcon icon={faCartShopping} /></NavLink></li>
+            <li><NavLink className={getClass} to="/produtos"><FontAwesomeIcon icon={faDollarSign} /></NavLink></li>
+            <li><NavLink className={getClass} to="/historico"><FontAwesomeIcon icon={faClock} /></NavLink></li>
+            <li><NavLink className={getClass} to="/analises"><FontAwesomeIcon icon={faChartBar} /></NavLink></li>
           </ul>
         </div>
         <div className="div-infos">
