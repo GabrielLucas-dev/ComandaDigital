@@ -1,0 +1,16 @@
+import type { categoria } from '../model/categoria.js'
+import * as categoriasRepository from '../repository/categoriasRepository.js'
+
+export async function findCategorias() {
+    const categorias = await categoriasRepository.getCategorias()
+    if(categorias.length === 0) console.log("Não há categorias")
+
+    return categorias
+}
+
+export async function insertCategoria(value: categoria){
+   const categoria = await categoriasRepository.postCategoria(value) 
+   if(!value) throw new Error("Valor faltando")
+
+    return categoria
+}

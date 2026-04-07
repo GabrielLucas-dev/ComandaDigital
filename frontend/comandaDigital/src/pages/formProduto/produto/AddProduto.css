@@ -73,10 +73,16 @@
 .add-btn{
     text-align: center;
     margin: 1rem 0;
+    display: flex;
+    justify-content: center;
 }
 
 .add-button{
     width: 95%;
     margin: 0 0.5rem;
+    
+}
+
+.category{
     
 }

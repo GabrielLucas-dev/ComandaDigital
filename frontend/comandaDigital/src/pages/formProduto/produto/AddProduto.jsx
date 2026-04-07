@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import "./AddProduto.css";
+import axios from 'axios'
 
 function AddProduto() {
+
+  axios.get('http://localhost:3031/categorias')
+
   return (
     <>
       <section className="container-addProduto">
@@ -17,6 +21,7 @@ function AddProduto() {
           </h2>
           <form>
             <div className="form-add">
+              
               <div className="add-layout">
                 <label>Produto</label>
                 <input type="text" required placeholder="EX: Açaí 300ml"/>
@@ -25,6 +30,11 @@ function AddProduto() {
                 <label>Preço</label>
                 <input type="text" required placeholder="EX: 20,00"/>
               </div>
+            </div>
+            <div className="catogory">
+              <select name="" id="">
+                <option value="tal">tal</option>
+              </select>
             </div>
             <div className="add-btn">
                 <input type="submit" value="Confirmar" className="button-padrao add-button" />
