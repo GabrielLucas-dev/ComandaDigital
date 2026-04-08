@@ -3,7 +3,7 @@ import * as categoriasService from '../service/categoriasService.js'
 
 export async function findCategorias(req: Request, res: Response) {
     try{
-        const result = categoriasService.findCategorias()
+        const result = await categoriasService.findCategorias()
         res.status(200).json(result)
     } catch(error: any) {
         res.status(400).json({message: error.message})

@@ -15,6 +15,6 @@ export async function insertProduto(req: Request, res: Response) {
     const result = await produtosService.insertProduto(req.body);
     res.status(201).json(result);
   } catch (error: any) {
-    res.status(401).json({ message: error.message });
+    res.status(400).json({ message: error.message });
   }
 }

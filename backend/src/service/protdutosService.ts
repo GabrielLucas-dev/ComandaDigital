@@ -3,7 +3,7 @@ import * as produtosRepository from "../repository/produtosRepository.js";
 
 export async function findProdutos(): Promise<produtos[]> {
     const produtos = await produtosRepository.getProdutos()
-    if(produtos.length === 0) console.log("Não há produtos")
+    if(produtos.length === 0) throw new Error("Não há produtos")
 
     return produtos;
 }

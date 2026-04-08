@@ -5,7 +5,7 @@ export async function getProdutos(): Promise<produtos[]> {
     const sql = "SELECT * FROM produtos"
     const [result] = await db.query(sql)
     
-    return [result] as produtos[];
+    return result as produtos[];
 }
 
 getProdutos()
@@ -15,11 +15,9 @@ getProdutos()
 
 //FALTA PASSAR A CATEGORIA
 export async function postProduto(produto: any) {
-  const sql = "INSERT INTO produtos (nome_produto, preco_produto) VALUES (?, ?)";
-  const values = [produto.nome_produto, produto.preco_produto];
+  const sql = "INSERT INTO produtos (nome_produto, preco_produto, categoria_id) VALUES (?, ?, ?)";
+  const values = [produto.nome_produto, produto.preco_produto, produto.categoria_id];
 
   const result = await db.query(sql, values);
   return result;
 }
-
-

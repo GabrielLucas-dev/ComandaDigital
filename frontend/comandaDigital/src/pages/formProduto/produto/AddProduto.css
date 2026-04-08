@@ -84,5 +84,24 @@
 }
 
 .category{
+    width: 100%;
     
+}
+
+.category label{
+    margin: 0 0.75rem;
+    font-weight: 500;
+}
+
+.category select{
+    margin: 0.1rem 0.75rem;
+    padding: 0.25rem;
+    border: 1px solid #fff;
+    color: #555;
+    outline: none;
+    border-radius: 8px;
+}
+
+.category select:focus{
+    border-color: var(--cor-fonte3);
 }

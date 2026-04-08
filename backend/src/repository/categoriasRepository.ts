@@ -1,7 +1,6 @@
 import { db } from "../config/db_conn.js";
 import type { categoria } from "../model/categoria.js";
 
-//NÃO ESTA RETORNANDO OS DADOS, APENAS UM OBJETO '{}' VAZIO
 export async function getCategorias(): Promise<categoria[]> {
   const sql = "SELECT * FROM categorias";
   const [result] = await db.query(sql);
