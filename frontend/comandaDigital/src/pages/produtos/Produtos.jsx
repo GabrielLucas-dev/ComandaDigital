@@ -28,7 +28,11 @@ function Produtos() {
               <li>Regras de negócio</li>
             </ul>
           </div>
-          <div className="produtos-content"></div>
+          <div className="produtos-content">
+            <div className="inner-produtos-content">
+              a
+            </div>
+          </div>
         </div>
       </section>
     </>

@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Vendas.css";
+import axios from 'axios' 
 
 function Vendas() {
+
+  const [categorias, setCategorias] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3031/categorias')
+    .then(res => {
+      // console.log(res.data)
+      setCategorias(res.data)
+    })
+  }, [])
+
+  // console.log(categorias)
+
   return (
     <>
       <section className="container-vendas">
@@ -24,9 +39,11 @@ function Vendas() {
               <div className="itens-list">
                 <ul>
                   <li>Todos</li>
-                  <li>Açaí no copo</li>
-                  <li>Complementos</li>
-                  <li>Bebidas</li>
+                  {categorias.map((cat, i) => {
+                    return(
+                      <li key={i}>{cat.nome_categoria}</li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>

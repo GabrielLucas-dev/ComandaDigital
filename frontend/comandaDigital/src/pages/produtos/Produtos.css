@@ -48,3 +48,14 @@
     border-bottom: 1px solid var(--cor-fonte3);
     color: var(--cor-fonte3);
 }
+
+.produtos-content{
+    width: 100%;
+    
+}
+
+.inner-produtos-content{
+    width: 90%;
+    margin: 1.5rem auto;
+    border: 1px solid red;
+}
