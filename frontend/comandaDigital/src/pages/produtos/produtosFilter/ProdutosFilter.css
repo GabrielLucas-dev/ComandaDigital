@@ -1,0 +1,61 @@
+.container-produtosFilter{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.produtosFilter-header{
+    border-bottom: 1px solid #aaa;
+}
+
+.produtosFilter-content:nth-chlid(even){
+    background-color: #aaa;
+}
+
+.produtosFilter-header, .produtosFilter-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
+}
+
+.produtosFilter-header div, .produtosFilter-content div {
+  padding: 0.25rem;
+}
+
+.produtosFilter-content{
+    padding: 0.4rem 0;    
+}
+
+.produtosFilter-layout{
+    margin-top: 1rem;
+}
+
+.exclude-button{
+    margin-right: 0.5rem;
+    padding: 5px 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #cd3939;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.exclude-button:hover{
+    background-color: #a52323;
+}
+
+.edit-button{
+    margin-right: 0.75rem;
+    padding: 5px 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #3c50e7;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.edit-button:hover{
+    background-color: #2c3cbc;
+}

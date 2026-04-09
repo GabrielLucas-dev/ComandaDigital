@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Produtos.css";
 
-function Produtos() {
+function Produtos({whichFilter}) {
   return (
     <>
       <section className="container-produtos">
@@ -22,15 +22,17 @@ function Produtos() {
           </div>
           <div className="options-produtos">
             <ul>
-              <li>Itens (Produtos)</li>
-              <li>Categorias</li>
-              <li>Complementos</li>
-              <li>Regras de negócio</li>
+              <NavLink className='li-options' to="/produtos/filterProdutos">Itens (Produtos)</NavLink>
+              <NavLink className='li-options' to="/produtos/filterCategorias">Categorias</NavLink>
+              <NavLink className='li-options' to="/produtos/filterComplementos">Complementos</NavLink>
+              {/* <NavLink className='li-options'>Regras de negócio</NavLink> */}
             </ul>
           </div>
           <div className="produtos-content">
             <div className="inner-produtos-content">
-              a
+              <div className="produtos-title">
+                {whichFilter}
+              </div>
             </div>
           </div>
         </div>

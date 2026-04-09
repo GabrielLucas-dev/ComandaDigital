@@ -9,6 +9,9 @@ import FormProduto from "./pages/formProduto/FormProduto";
 import AddProduto from "./pages/formProduto/produto/AddProduto";
 import AddCategoria from './pages/formProduto/categoria/AddCategoria'
 import AddComplemento from "./pages/formProduto/complemento/AddComplemento";
+import ProdutosFilter from "./pages/produtos/produtosFilter/ProdutosFilter";
+import ComplementosFilter from "./pages/produtos/complementosFilter/complementosFilter";
+import CategoriasFilter from "./pages/produtos/categoriasFilter/CategoriasFilter";
 
 function App() {
   return (
@@ -25,6 +28,10 @@ function App() {
           <Route path="/addProduto" element={<AddProduto />}/>
           <Route path="/addCategoria" element={<AddCategoria />}/>
           <Route path="/addComplemento" element={<AddComplemento />}/>
+
+          <Route path="/produtos/filterProdutos" element={<Produtos whichFilter={<ProdutosFilter />} />}/>
+          <Route path="/produtos/filterCategorias" element={<Produtos whichFilter={<CategoriasFilter />} />}/>
+          <Route path="/produtos/filterComplementos" element={<Produtos whichFilter={<ComplementosFilter />} />}/>
 
         </Routes>
       </BrowserRouter>
