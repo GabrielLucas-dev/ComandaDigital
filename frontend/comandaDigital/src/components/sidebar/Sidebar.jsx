@@ -19,7 +19,7 @@ function Sidebar() {
         <div className="div-links">
           <ul>
             <li><NavLink className={getClass} to="/vendas"><FontAwesomeIcon icon={faCartShopping} /></NavLink></li>
-            <li><NavLink className={getClass} to="/produtos"><FontAwesomeIcon icon={faDollarSign} /></NavLink></li>
+            <li><NavLink className={getClass} to="/produtos/filterProdutos"><FontAwesomeIcon icon={faDollarSign} /></NavLink></li>
             <li><NavLink className={getClass} to="/historico"><FontAwesomeIcon icon={faClock} /></NavLink></li>
             <li><NavLink className={getClass} to="/analises"><FontAwesomeIcon icon={faChartBar} /></NavLink></li>
           </ul>

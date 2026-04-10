@@ -11,6 +11,15 @@ function ProdutosFilter() {
         .then(res => setProdutos(res.data))
     }, [])
 
+    const handleDelete = async (id_produto) => {
+      await axios.delete(`http://localhost:3031/produtos/${id_produto}`)
+      .then(res => console.log(res.data))
+      .catch(error => console.log(error))
+
+      window.location.reload()
+    }
+
+
   return (
     <>
       <section className="container-produtosFilter">
@@ -50,7 +59,7 @@ function ProdutosFilter() {
                 <p>{prod.nome_categoria}</p>
             </div>
             <div>
-                <button className="exclude-button">Excluir</button>
+                <button className="exclude-button" onClick={() => handleDelete(prod.id_produto)}>Excluir</button>
                 <button className="edit-button">Editar</button>
             </div>
           </div>

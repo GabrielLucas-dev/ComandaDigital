@@ -18,3 +18,24 @@ export async function insertCategoria(req: Request, res: Response) {
         res.status(400).json({message: error.message})
     }
 }
+
+
+export async function deleteCategoria(req: Request, res: Response){
+    const id = req.params.id_categoria
+    try{
+        const result = categoriasService.deleteCategoria(id)
+        res.status(200).json(result)
+    } catch(error: any) {
+        res.status(400).json({message: error.message})
+    }
+}
+
+export async function findCategoriaById(req: Request, res: Response) {
+    const id = req.params.id_categoria
+    try{
+        const categoria = await categoriasService.findCategoriaById(id)
+        res.status(200).json(categoria)
+    } catch(error: any){
+        res.status(400).json({message: error.message})
+    }
+}

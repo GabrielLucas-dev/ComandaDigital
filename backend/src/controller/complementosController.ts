@@ -18,3 +18,23 @@ export async function insertComplemento(req: Request, res: Response) {
         res.status(400).json({message: error.message})
     }
 }
+
+export async function deleteComplemento(req: Request, res: Response){
+    const id = req.params.id_complemento
+    try{
+        const result = complementosService.deleteComplemento(id)
+        res.status(200).json(result)
+    } catch(error: any) {
+        res.status(400).json({message: error.message})
+    }
+}
+
+export async function findComplementoById(req: Request, res: Response){
+    const id = req.params.id_complemento
+    try{
+        const result = await complementosService.findComplmentoById(id)
+        res.status(200).json(result)
+    } catch(error: any) {
+        res.status(400).json({message: error.message})
+    }
+}

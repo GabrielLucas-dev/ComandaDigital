@@ -14,3 +14,17 @@ export async function insertCategoria(value: categoria){
 
     return categoria
 }
+
+export async function deleteCategoria(id_categoria: any){
+    if(!id_categoria) throw new Error("ID não encotrado")
+    const delCategoria = categoriasRepository.deleteCategoria(id_categoria)
+
+    return delCategoria
+}
+
+export async function findCategoriaById(id_categoria: any){
+    if(!id_categoria) throw new Error("ID não encotrado")
+    const getCategoria = await categoriasRepository.getCategoriaById(id_categoria)
+
+    return getCategoria
+}

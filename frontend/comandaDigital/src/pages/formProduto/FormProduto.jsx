@@ -8,7 +8,7 @@ function FormProduto() {
         <>
         <section className="container-formProduto">
             <div className="div-back-button">
-                <Link to="/produtos" className="button-padrao">Voltar</Link>
+                <Link to="/produtos/filterProdutos" className="button-padrao">Voltar</Link>
             </div>
             <div className="form-produto">
                 <h3>O que deseja <span>adicionar</span>?</h3>

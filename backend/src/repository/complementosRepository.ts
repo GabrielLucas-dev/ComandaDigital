@@ -21,3 +21,17 @@ export async function postComplmento(complemento: complemento) {
 
     return result
 }
+
+export async function deleteComplemento(id_complemento: any) {
+    const sql = "DELETE FROM complementos WHERE id_complemento = ?"
+    const result = await db.query(sql, id_complemento)
+
+    return result
+}
+
+export async function getComplementoById(id_complemento: any){
+    const sql = "SELECT * FROM complementos WHERE id_complemento = ?"
+    const [result] = await db.query(sql, id_complemento)
+
+    return result[0]
+}

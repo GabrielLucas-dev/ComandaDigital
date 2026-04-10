@@ -6,6 +6,7 @@ import axios from 'axios'
 function Vendas() {
 
   const [categorias, setCategorias] = useState([])
+  const [produtos, setProdutos] = useState([])
 
   useEffect(() => {
     axios.get('http://localhost:3031/categorias')
@@ -13,6 +14,10 @@ function Vendas() {
       // console.log(res.data)
       setCategorias(res.data)
     })
+
+    axios.get('http://localhost:3031/produtos')
+    .then(res => setProdutos(res.data))
+    .catch(error => console.log(error))
   }, [])
 
   // console.log(categorias)
@@ -51,18 +56,15 @@ function Vendas() {
             <div className="vendas-content">
               <div className="vendas-layout">
 
-                <div className="card-venda">
-                  <p>Açaí 300ml</p>
-                  <h4>R$ 20,00</h4>
+                {produtos.map((prod, i) => {
+                  return(
+                <div className="card-venda" key={i}>
+                  <p>{prod.nome_produto}</p>
+                  <h4>R${prod.preco_produto}</h4>
                   <button className="button-padrao2">Adicionar ao carrinho</button>
                 </div>
-                <div className="card-venda">
-                  <p>Açaí 300ml</p>
-                  <h4>R$ 20,00</h4>
-                  <button className="button-padrao2">Adicionar ao carrinho</button>
-                </div>
-
-                
+                  )
+                })}
 
               </div>
             </div>

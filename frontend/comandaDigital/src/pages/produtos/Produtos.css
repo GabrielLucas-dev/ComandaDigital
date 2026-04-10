@@ -36,19 +36,24 @@
     justify-content: space-evenly;
 }
 
-.options-produtos ul .li-options{
-    font-weight: 600;
-    padding: 0.25rem 1rem;
-    transition: 0.2s ease;
-    cursor: pointer;
-    color: #000;
-    border: 1px solid #f0f0f0;
-    text-decoration: none;
+.options-produtos ul li a.li-options {
+  font-weight: 600;
+  padding: 0.25rem 1rem;
+  transition: 0.2s ease;
+  cursor: pointer;
+  color: #000;
+  border: 1px solid #f0f0f0;
+  text-decoration: none;
 }
 
-.options-produtos ul .li-options:hover{
-    border-bottom: 1px solid var(--cor-fonte3);
-    color: var(--cor-fonte3);
+.options-produtos ul li a.li-options:hover {
+  border-bottom: 1px solid var(--cor-fonte3);
+  color: var(--cor-fonte3);
+}
+
+.options-produtos ul li a.li-options.active2 {
+  border-bottom: 1px solid var(--cor-fonte3);
+  color: var(--cor-fonte3);
 }
 
 .produtos-content{

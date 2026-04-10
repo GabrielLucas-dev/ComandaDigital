@@ -29,3 +29,17 @@ export async function postProduto(produto: any) {
   const result = await db.query(sql, values);
   return result;
 }
+
+export async function deleteProduto(id_produto: any){
+  const sql = 'DELETE FROM produtos WHERE id_produto = ?' 
+  const result = await db.query(sql, id_produto)
+
+  return result
+}
+
+export async function getProdutoById(id_produto: any) {
+  const sql = "SELECT * FROM produtos WHERE id_produto = ?"
+  const [result] = await db.query(sql, id_produto)
+
+  return result[0]
+}

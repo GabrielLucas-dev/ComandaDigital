@@ -18,3 +18,23 @@ export async function insertProduto(req: Request, res: Response) {
     res.status(400).json({ message: error.message });
   }
 }
+
+export async function deleteProduto(req: Request, res: Response){
+  const id = req.params.id_produto
+  try{
+    const result = await produtosService.deleteProduto(id)
+    res.status(200).json(result)
+  } catch(error: any){
+    res.status(400).json({message: error.message})
+  }
+}
+
+export async function findProdutoById(req: Request, res: Response){
+  const id = req.params.id_produto
+  try{
+    const produto = await produtosService.findProdutobyId(id)
+    res.status(200).json(produto)
+  } catch(error: any){
+    res.status(400).json({message: error.message})
+  }
+}

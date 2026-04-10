@@ -13,3 +13,17 @@ export async function insertComplemento(values: any) {
 
     return complemento
 }
+
+export async function deleteComplemento(id_complemento: any) {
+    if(!id_complemento) throw new Error("ID não encontrado")
+    const delComplemento = complementosRepository.deleteComplemento(id_complemento)
+
+    return delComplemento
+}
+
+export async function findComplmentoById(id_complemento: any){
+    if(!id_complemento) throw new Error("ID não encontrado")
+    const getComplemento = await complementosRepository.getComplementoById(id_complemento)
+
+    return getComplemento
+}

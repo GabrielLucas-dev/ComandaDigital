@@ -10,6 +10,14 @@ function CategoriasFilter() {
       .catch((error) => console.log(error));
   }, []);
 
+  const handleDelete = async (id_categoria) => {
+    axios.delete(`http://localhost:3031/categorias/${id_categoria}`)
+    .then(res => console.log(res.data))
+    .catch(error => console.log(error))
+
+    window.location.reload()
+  }
+
   return (
     <>
       <section className="container-produtosFilter">
@@ -36,7 +44,7 @@ function CategoriasFilter() {
                   <p>{cat.nome_categoria}</p>
                 </div>
                 <div>
-                  <button className="exclude-button">Excluir</button>
+                  <button className="exclude-button" onClick={() => handleDelete(cat.id_categoria)}>Excluir</button>
                   <button className="edit-button">Editar</button>
                 </div>
               </div>

@@ -11,6 +11,15 @@ function ComplementosFilter() {
       .catch((error) => console.log(error));
   }, []);
 
+  const handleDelete = async (id_complemento) => {
+  axios.delete(`http://localhost:3031/complementos/${id_complemento}`)
+    .then(res => console.log(res.data))
+    .catch(error => console.log(error))
+
+    window.location.reload()
+  
+  }
+
   return (
     <>
       <section className="container-produtosFilter">
@@ -43,7 +52,7 @@ function ComplementosFilter() {
                   <p>{comp.preco}</p>
                 </div>
                 <div>
-                  <button className="exclude-button">Excluir</button>
+                  <button className="exclude-button" onClick={() => handleDelete(comp.id_complemento)}>Excluir</button>
                   <button className="edit-button">Editar</button>
                 </div>
               </div>
