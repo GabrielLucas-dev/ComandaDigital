@@ -1,16 +1,20 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import { useState } from "react"
 
 function AddCategoria() {
 
   const [nomeCategoria, setNomeCategoria] = useState('');
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
 
     axios.post('http://localhost:3031/categorias', {nome_categoria: nomeCategoria})
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+      navigate('/produtos/filterCategorias')
+    })
     .catch(error => console.log(error))
   }
 

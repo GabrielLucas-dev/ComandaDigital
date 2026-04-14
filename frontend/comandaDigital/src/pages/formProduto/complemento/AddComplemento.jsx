@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useState } from "react";
 
@@ -6,12 +6,16 @@ function AddComplemento() {
 
   const [nomeComplemento, setNomeComplemento] = useState()
   const [precoComplemento, setPrecoComplemento] = useState()
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
 
     axios.post('http://localhost:3031/complementos', {nome_complemento: nomeComplemento, preco: precoComplemento})
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+      navigate('/produtos/filterComplementos')
+    })
     .catch(error => console.log(error))
   }
 

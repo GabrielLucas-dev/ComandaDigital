@@ -1,63 +1,95 @@
-.container-vendas{
+/* ========================
+   LAYOUT PRINCIPAL
+   ======================== */
+.container-vendas {
     display: flex;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 
-.teste{
-    width: 81.6%;
+/* Área central (header + conteúdo) */
+.teste {
+    flex: 1;
+    min-width: 0; /* evita overflow em flex children */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.vendas-header{
+/* ========================
+   HEADER
+   ======================== */
+.vendas-header {
     width: 100%;
     height: 100px;
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.vendas-header .header-title{
+.vendas-header .header-title {
     display: flex;
     align-items: center;
-    margin: 0 1rem;    
+    margin: 0 1rem;
 }
-.vendas-header .header-title span{
+
+.vendas-header .header-title span {
     color: var(--cor-fonte3);
 }
 
-.vendas-header .div-search{
+.vendas-header .div-search {
     display: flex;
     align-items: center;
     padding: 0 1.5rem;
 }
 
-.vendas-header .div-search input{
+.vendas-header .div-search input {
     padding: 0.5rem;
     width: 280px;
+    max-width: 100%;
     border: none;
     border-radius: 8px;
     outline: none;
 }
 
-.vendas-header .div-search input:focus-visible{
+.vendas-header .div-search input:focus-visible {
     border: 1px solid var(--cor-fonte3);
 }
 
-.middle-content{
+/* ========================
+   CONTEÚDO INTERMEDIÁRIO
+   ======================== */
+.middle-content {
     display: flex;
-    height: 86%;
+    flex: 1;
+    min-height: 0; /* permite que o flex item encolha */
+    overflow: hidden;
 }
 
-.sidebar-itens{
+/* Sidebar de categorias */
+.sidebar-itens {
     border-right: 1px solid #aaaaaa;
     border-top: 1px solid #aaaaaa;
     width: 200px;
+    flex-shrink: 0;
+    overflow-y: auto;
 }
 
-.sidebar-itens .itens-list{
+.sidebar-itens .itens-list {
     padding-top: 0.75rem;
 }
 
-.sidebar-itens .itens-list ul li{
+.sidebar-itens .itens-list ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-itens .itens-list ul li {
     margin: 0.75rem;
     cursor: pointer;
     padding: 4px;
@@ -67,71 +99,232 @@
     font-weight: 600;
 }
 
-.sidebar-itens .itens-list ul li:hover{
+.sidebar-itens .itens-list ul li:hover {
     border: 1px solid var(--cor-fonte3);
     color: var(--cor-fonte3);
 }
 
-.vendas-content{
+/* ========================
+   ÁREA DE PRODUTOS
+   ======================== */
+.vendas-content {
     border-top: 1px solid #aaaaaa;
-    width: 100%;
-}
-
-.cart{
-    border-left: 1px solid #aaaaaa;
-    position: absolute;
-    right: 0;
-    width: 13.2%;
+    flex: 1;
+    min-width: 0;
     height: 100%;
-}   
-
-.cart h3{
-    text-align: center;
-    margin: 1rem 0;
+    overflow-y: auto;
 }
 
-.confirm-order{
-    position: absolute;
-    bottom: 1rem;
-    text-align: center;
-    width: 100%;
-}
-
-.confirm-order p{
-    padding-bottom: 8px;
-}
-
-
-.vendas-content{
-    width: 100%;
-    height: 100%;
-}
-
-.vendas-layout{
+.vendas-layout {
     display: flex;
     margin: 1rem;
     flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.card-venda{
+.card-venda {
     border: 1px solid #aaaaaa;
     padding: 0.75rem;
     text-align: center;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-    margin: 1rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem;
+    flex: 1 1 150px; /* cresce e encolhe, mínimo 150px */
+    max-width: 220px;
 }
 
-.card-venda h4{
+.card-venda h4 {
     font-size: 1.1rem;
     padding: 0 0.25rem 0.25rem 0.25rem;
 }
 
-.card-venda p{
+.card-venda p {
     padding: 0.25rem;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
-.card-venda button{
+.card-venda button {
     margin-top: 0.25rem;
+}
+
+/* ========================
+   CARRINHO
+   ======================== */
+.cart {
+    border-left: 1px solid #aaaaaa;
+    width: 200px;
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* retira o absolute problemático */
+}
+
+.cart h3 {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.confirm-order {
+    margin-top: auto; /* empurra para o fundo naturalmente */
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.confirm-order p {
+    padding-bottom: 8px;
+}
+
+/* ========================
+   RESPONSIVIDADE
+   ======================== */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+    .sidebar-itens {
+        width: 150px;
+    }
+
+    .cart {
+        width: 160px;
+    }
+
+    .vendas-header .div-search input {
+        width: 200px;
+    }
+
+    .card-venda {
+        flex: 1 1 130px;
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container-vendas {
+        flex-direction: row;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .teste {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .vendas-header {
+        height: auto;
+        min-height: 60px;
+        padding: 0.5rem 0.75rem;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .vendas-header .header-title {
+        margin: 0;
+    }
+
+    .vendas-header .header-title h2 {
+        font-size: 1rem;
+    }
+
+    .vendas-header .div-search {
+        padding: 0;
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .vendas-header .div-search input {
+        width: 100%;
+    }
+
+    .middle-content {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+        /* categorias + produtos ficam em coluna dentro da área central */
+        flex-direction: column;
+    }
+
+    /* Categorias vira barra de scroll horizontal */
+    .sidebar-itens {
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+        border-right: none;    
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .sidebar-itens .itens-list {
+        padding-top: 0;
+    }
+
+    .sidebar-itens .itens-list ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 0.4rem 0.5rem;
+    }
+
+    .sidebar-itens .itens-list ul li {
+        white-space: nowrap;
+        margin: 0 0.25rem;
+        flex-shrink: 0;
+    }
+
+    .vendas-content {
+        flex: 1;
+        min-height: 0;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .vendas-layout {
+        justify-content: center;
+    }
+
+    .card-venda {
+        flex: 1 1 130px;
+        max-width: 160px;
+    }
+
+    /* Carrinho compacto na lateral direita */
+    .cart {
+        width: 130px;
+        flex-shrink: 0;
+        height: 100%;
+        border-left: 1px solid #aaaaaa;
+        font-size: 0.85rem;
+    }
+
+    .cart h3 {
+        font-size: 0.9rem;
+        margin: 0.6rem 0;
+    }
+
+    .confirm-order {
+        padding: 0.5rem;
+    }
+    .button-padrao2{
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile pequeno (≤ 480px) */
+@media (max-width: 480px) {
+    .card-venda {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .vendas-layout {
+        margin: 0.5rem;
+    }
 }

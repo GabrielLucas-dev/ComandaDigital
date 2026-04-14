@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./AddProduto.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 function AddProduto() {
 
   const [categorias, setCategorias] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
@@ -29,7 +30,10 @@ function AddProduto() {
       preco_produto: preco,
       categoria_id: selecionado
     })
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+      navigate('/produtos/filterProdutos')
+    })
     .catch(error => console.log(error))
   }
 

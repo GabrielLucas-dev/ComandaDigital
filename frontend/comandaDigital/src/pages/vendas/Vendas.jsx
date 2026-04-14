@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Vendas.css";
 import axios from 'axios' 
+import Cart from "../../components/cart/Cart";
 
 function Vendas() {
 
@@ -20,7 +21,26 @@ function Vendas() {
     .catch(error => console.log(error))
   }, [])
 
-  // console.log(categorias)
+  const [cart, setCart] = useState([])
+  function addToCart(produto) {
+    // console.log(produto)
+    // setCart(produto)
+    // console.log(cart)
+
+    setCart(prev => {
+      const existe = prev.find(item => item.id_produto === produto.id_produto)
+      if(existe){
+        return prev.map(item => {
+          item.id_produto === produto.id_produto
+          ? {...item, quantidade: item.quantidade + 1}
+          : item
+        })
+      }
+      return [...prev, {...produto, quantidade: 1}]
+    })
+    
+    console.log(cart)
+  }
 
   return (
     <>
@@ -61,7 +81,7 @@ function Vendas() {
                 <div className="card-venda" key={i}>
                   <p>{prod.nome_produto}</p>
                   <h4>R${prod.preco_produto}</h4>
-                  <button className="button-padrao2">Adicionar ao carrinho</button>
+                  <button className="button-padrao2" onClick={() => addToCart(prod)} >Adicionar ao carrinho</button>
                 </div>
                   )
                 })}
@@ -73,14 +93,7 @@ function Vendas() {
         </div>
 
         <div className="cart">
-          <h3>Resumo do pedido</h3>
-          <hr />
-          <div className="confirm-order">
-            <form action="">
-            <p>R$: Valor total</p>
-            <input type="submit" value="Confirmar pedido" className="button-padrao" />
-            </form>
-          </div>
+          <Cart />
         </div>
       </section>
     </>
