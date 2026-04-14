@@ -28,3 +28,11 @@ export async function findProdutobyId(id_produto: any){
 
   return findProduto
 }
+
+export async function editProduto(values: any, id_produto: any){
+  if(!values) throw new Error('valor(es) faltando!')
+  if(!id_produto) throw new Error('ID não encotrado!')
+  const produto = produtosRepository.putProduto(values, id_produto) 
+
+  return produto
+}

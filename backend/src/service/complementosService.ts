@@ -27,3 +27,11 @@ export async function findComplmentoById(id_complemento: any){
 
     return getComplemento
 }
+
+export async function editComplemento(values: any, id_categoria: any){
+    if(!values) throw new Error("Valor(es) faltando!")
+    if(!id_categoria) throw new Error("ID não encontrado")
+    const editComplemento = await complementosRepository.putComplemento(values, id_categoria)
+
+    return editComplemento
+}

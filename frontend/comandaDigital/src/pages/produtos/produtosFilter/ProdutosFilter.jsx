@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ProdutosFilter.css";
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function ProdutosFilter() {
 
@@ -18,6 +19,7 @@ function ProdutosFilter() {
 
       window.location.reload()
     }
+
 
 
   return (
@@ -60,7 +62,7 @@ function ProdutosFilter() {
             </div>
             <div>
                 <button className="exclude-button" onClick={() => handleDelete(prod.id_produto)}>Excluir</button>
-                <button className="edit-button">Editar</button>
+                <button className="edit-button"><Link className="edit-link" to={`/produtos/filterProdutos/editProduto/${prod.id_produto}`}>Editar</Link></button>
             </div>
           </div>
             )

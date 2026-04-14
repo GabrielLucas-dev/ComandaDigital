@@ -28,3 +28,11 @@ export async function findCategoriaById(id_categoria: any){
 
     return getCategoria
 }
+
+export async function editCategoria(value: any, id_categoria:any){
+    if(!value) throw new Error('valor faltando!')
+    if(!id_categoria) throw new Error("ID não encotrado!")
+    const editCategoria = categoriasRepository.putCategoria(value, id_categoria)
+
+    return editCategoria
+}

@@ -38,3 +38,14 @@ export async function findProdutoById(req: Request, res: Response){
     res.status(400).json({message: error.message})
   }
 }
+
+export async function editProduto(req: Request, res: Response){
+  const values = req.body
+  const id = req.params.id_produto
+  try{
+    const novoProduto = await produtosService.editProduto(values, id)
+    res.status(200).json(novoProduto) 
+  } catch(error: any) {
+    res.status(400).json({message: error.message})
+  }
+}

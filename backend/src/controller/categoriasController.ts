@@ -39,3 +39,14 @@ export async function findCategoriaById(req: Request, res: Response) {
         res.status(400).json({message: error.message})
     }
 }
+
+export async function editCategoria(req: Request, res: Response) {
+    const value = req.body
+    const id = req.params.id_categoria
+    try{
+        const categoria = await categoriasService.editCategoria(value, id)
+        res.status(200).json(categoria)
+    } catch(error: any) {
+        res.status(400).json({message: error.message})
+    }
+}

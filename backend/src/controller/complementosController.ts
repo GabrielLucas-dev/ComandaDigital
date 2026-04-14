@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import * as complementosService from '../service/complementosService.js'
+import { resourceLimits } from 'node:worker_threads';
 
 export async function findComplementos(req: Request, res: Response) {
     try{
@@ -35,6 +36,17 @@ export async function findComplementoById(req: Request, res: Response){
         const result = await complementosService.findComplmentoById(id)
         res.status(200).json(result)
     } catch(error: any) {
+        res.status(400).json({message: error.message})
+    }
+}
+
+export async function editComplemento(req: Request, res: Response){
+    const values = req.body
+    const id = req.params.id_complemento
+    try{
+        const result = await complementosService.editComplemento(values, id)
+        res.status(200).json(result)
+    } catch(error: any){
         res.status(400).json({message: error.message})
     }
 }

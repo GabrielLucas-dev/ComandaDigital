@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function CategoriasFilter() {
   const [categorias, setCategorias] = useState([]);
@@ -45,7 +46,7 @@ function CategoriasFilter() {
                 </div>
                 <div>
                   <button className="exclude-button" onClick={() => handleDelete(cat.id_categoria)}>Excluir</button>
-                  <button className="edit-button">Editar</button>
+                  <button className="edit-button"><Link className="edit-link" to={`/produtos/filterCategorias/editCategoria/${cat.id_categoria}`}>Editar</Link></button>
                 </div>
               </div>
             );

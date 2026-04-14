@@ -35,3 +35,10 @@ export async function getComplementoById(id_complemento: any){
 
     return result[0]
 }
+
+export async function putComplemento(values: any, id_complemento:any) {
+    const sql = "UPDATE complementos SET nome_complemento = ?, preco = ? WHERE id_complemento = ?"
+    const result = await db.query(sql, [values.nome_complemento, values.preco, id_complemento])
+
+    return result
+}

@@ -35,3 +35,10 @@ export async function getCategoriaById(id_categoria: any){
 
   return result[0]
 }
+
+export async function putCategoria(value: any, id_categoria: any){
+  const sql = "UPDATE categorias SET nome_categoria = ? WHERE id_categoria = ?"
+  const result = await db.query(sql, [value.nome_categoria, id_categoria])
+
+  return result 
+}

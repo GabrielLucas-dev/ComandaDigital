@@ -12,6 +12,9 @@ import AddComplemento from "./pages/formProduto/complemento/AddComplemento";
 import ProdutosFilter from "./pages/produtos/produtosFilter/ProdutosFilter";
 import ComplementosFilter from "./pages/produtos/complementosFilter/complementosFilter";
 import CategoriasFilter from "./pages/produtos/categoriasFilter/CategoriasFilter";
+import EditProduto from "./pages/editsForms/editProduto/EditProduto";
+import EditCategoria from "./pages/editsForms/editCategoria/EditCategoria";
+import EditComplemento from "./pages/editsForms/editComplemento/EditComplemento";
 
 function App() {
   return (
@@ -33,6 +36,11 @@ function App() {
             <Route path="filterCategorias" element={<CategoriasFilter  />}/>
             <Route path="filterComplementos" element={<ComplementosFilter />}/>
           </Route>
+
+          <Route path="/produtos/filterProdutos/editProduto/:id_produto" element={< EditProduto/>}/>
+          <Route path="/produtos/filterCategorias/editCategoria/:id_categoria" element={<EditCategoria/>}/>
+          <Route path="/produtos/filterComplementos/editComplemento/:id_complemento" element={<EditComplemento />}/>
+
         </Routes>
       </BrowserRouter>
     </>

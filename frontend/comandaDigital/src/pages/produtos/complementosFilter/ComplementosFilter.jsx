@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ComplementosFilter() {
   const [complementos, setComplementos] = useState([]);
@@ -53,7 +54,7 @@ function ComplementosFilter() {
                 </div>
                 <div>
                   <button className="exclude-button" onClick={() => handleDelete(comp.id_complemento)}>Excluir</button>
-                  <button className="edit-button">Editar</button>
+                  <button className="edit-button"><Link className="edit-link" to={`/produtos/filterComplementos/editComplemento/${comp.id_complemento}`}>Editar</Link></button>
                 </div>
               </div>
             );

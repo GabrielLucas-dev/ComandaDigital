@@ -43,3 +43,10 @@ export async function getProdutoById(id_produto: any) {
 
   return result[0]
 }
+
+export async function putProduto(values: any, id_produto: any){
+  const sql = "UPDATE produtos SET nome_produto = ?, preco_produto = ?, categoria_id = ? WHERE id_produto = ?"
+  const result = await db.query(sql, [values.nome_produto, values.preco_produto, values.categoria_id, id_produto])
+
+  return result
+}
