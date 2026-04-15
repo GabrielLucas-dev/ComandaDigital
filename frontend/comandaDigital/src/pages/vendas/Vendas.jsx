@@ -28,20 +28,44 @@ function Vendas() {
       ...produto,
       complementos: complementosSel
     }
-    setCart(prev => [...prev, ...novoItem])
+    setCart(prev => [...prev, novoItem])
+  }
 
-    // setCart(prev => {
-    //   const existe = prev.find(item => item.id_produto === produto.id_produto)
-    //   if(existe){
-    //     return prev.map(item => {
-    //       item.id_produto === produto.id_produto
-    //       ? {...item, quantidade: item.quantidade + 1}
-    //       : item
-    //     })
-    //   }
-    //   return [...prev, {...produto, quantidade: 1}]
-    // })
+  //==========================
+  // VERIFICAR SE O PRODUTO EXIGE COMPLEMENTO
+  //==========================
 
+  //mais para frente tentar fazer isso dinamicamente, adicionando uma regra de negócio para isso
+  const nessecitaComplemento = "Açaí"
+  const verificaProduto = (produto) => {
+    return nessecitaComplemento.includes(produto.nome_categoria)
+  } 
+
+  //==========================
+  // MODAL
+  //==========================
+
+  const [isOpen, setIsOpen] = useState(false)
+  const closeModal = () => setIsOpen(false)
+
+  //==========================
+  // BUTTON CARRINHO HANDLER
+  //==========================
+
+  const [produtoSelecionado, setProdutoSelecionado] = useState()
+
+  function handleAddProduto(produto) {
+    try{
+      if(verificaProduto(produto)){
+        setProdutoSelecionado(produto)
+        setIsOpen(true)
+      }else{
+        setProdutoSelecionado(produto)
+        addToCart(produto, [])
+      }
+    }catch(error){
+      console.log(error)
+    }
   }
 
   useEffect(() => {
@@ -49,16 +73,8 @@ function Vendas() {
   }, [cart])
 
   //==========================
-  // MODAL
-  //==========================
-  const [isOpen, setIsOpen] = useState(false)
-  const closeModal = () => setIsOpen(false)
-
-  //==========================
-  // BUTTON CARRINHO HANDLER
-  //==========================
-  
-
+  // HTML
+  //==========================  
   return (
     <>
       <section className="container-vendas">
@@ -98,7 +114,7 @@ function Vendas() {
                 <div className="card-venda" key={i}>
                   <p>{prod.nome_produto}</p>
                   <h4>R${prod.preco_produto}</h4>
-                  <button className="button-padrao2" onClick={() => {setIsOpen(true)} /*() => addToCart(prod)*/} >Adicionar ao carrinho</button>
+                  <button className="button-padrao2" onClick={() => handleAddProduto(prod)} >Adicionar ao carrinho</button>
                 </div>
                   )
                 })}
@@ -109,7 +125,13 @@ function Vendas() {
             <div className="modal-complementos">
               {isOpen 
               ?
-              < ModalComplementos onClose={closeModal}/> 
+              < ModalComplementos 
+              onClose={closeModal}
+              onConfirm={(selecionados) => {
+                addToCart(produtoSelecionado, selecionados)
+                setIsOpen(false)
+              }}
+              /> 
               : 
               ""
               }
