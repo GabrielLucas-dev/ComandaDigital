@@ -3,6 +3,7 @@ import cors from "cors";
 import produtosRoute from "./routes/produtosRoute.js";
 import categoriasRoute from './routes/categoriasRoute.js'
 import complementosRoute from './routes/complementosRoute.js'
+import vendasRoute from './routes/vendasRoute.js'
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use("/categorias", categoriasRoute)
 app.use("/produtos", produtosRoute);
 app.use("/complementos", complementosRoute)
+app.use("/vendas", vendasRoute)
 
 app.get("/", (req, res) => {
   res.send({ message: "teste" });

@@ -15,6 +15,7 @@ import CategoriasFilter from "./pages/produtos/categoriasFilter/CategoriasFilter
 import EditProduto from "./pages/editsForms/editProduto/EditProduto";
 import EditCategoria from "./pages/editsForms/editCategoria/EditCategoria";
 import EditComplemento from "./pages/editsForms/editComplemento/EditComplemento";
+import ModalComplementos from "./components/modalComplementos/ModalComplementos";
 
 function App() {
   return (
