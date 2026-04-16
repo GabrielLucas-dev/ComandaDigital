@@ -1,0 +1,37 @@
+.cart-content{
+    height: 100%;
+    width: 100%;
+}
+
+.cart-item{
+    margin: 0.25rem;
+}
+
+.cart-item .item{
+    font-weight: 600;
+}
+
+.cart-item p{
+    margin: 0.1rem 0;
+}
+
+.cart-item hr{
+    margin: 0.5rem;
+}
+.cart-item button{
+    background-color: #d73b3b;
+    color: #fff;
+    border: none;
+    padding: 3px 0;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s ease;
+    margin-top: 0.2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.cart-item button:hover{
+    background-color: #c13030;
+}

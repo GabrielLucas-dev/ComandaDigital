@@ -1,0 +1,31 @@
+.container-modalPagamento{
+    width: 380px;
+    min-height: 340px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+}
+
+.modalPagamento-layout{
+    display: flex;
+    justify-content: center;
+}
+
+.modalPagamento-layout div{
+    border: 1px solid var(--cor-fonte3);
+    border-radius: 8px;
+    height: 120px;
+    width: 160px;
+    margin: 0.25rem;
+}
+
+.closePagamento-button{
+    background-color: transparent;
+    border: none;   
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: .1s ease;
+}
+
+.closePagamento-button:hover{
+    color: rgb(197, 55, 55);
+}

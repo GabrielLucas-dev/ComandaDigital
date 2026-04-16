@@ -68,9 +68,14 @@ function Vendas() {
     }
   }
 
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
+  //==========================
+  // BUTTON REMOVER DO CARRINHO 
+  //==========================
+
+  function removeProd(index){
+    // const produto = setCart(prev => prev.id_produto === prod.id_produto)
+    setCart(prev => prev.filter((_, i) => i !== index))
+  }
 
   //==========================
   // HTML
@@ -141,7 +146,10 @@ function Vendas() {
         </div>
 
         <div className="cart">
-          <Cart />
+          <Cart 
+           cart={cart} 
+           onRemove={removeProd} 
+          />
         </div>
       </section>
     </>

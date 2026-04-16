@@ -15,7 +15,7 @@ import CategoriasFilter from "./pages/produtos/categoriasFilter/CategoriasFilter
 import EditProduto from "./pages/editsForms/editProduto/EditProduto";
 import EditCategoria from "./pages/editsForms/editCategoria/EditCategoria";
 import EditComplemento from "./pages/editsForms/editComplemento/EditComplemento";
-import ModalComplementos from "./components/modalComplementos/ModalComplementos";
+import ModalPagamento from "./components/modalPagamento/ModalPagamento";
 
 function App() {
   return (
@@ -41,6 +41,8 @@ function App() {
           <Route path="/produtos/filterProdutos/editProduto/:id_produto" element={< EditProduto/>}/>
           <Route path="/produtos/filterCategorias/editCategoria/:id_categoria" element={<EditCategoria/>}/>
           <Route path="/produtos/filterComplementos/editComplemento/:id_complemento" element={<EditComplemento />}/>
+
+          {/* <Route path="/modalPagamento" element={<ModalPagamento/>}/> */}
 
         </Routes>
       </BrowserRouter>
