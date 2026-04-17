@@ -8,8 +8,8 @@ export async function getVendas(): Promise<vendas[]>{
     return result as vendas[]
 }
 
-export async function insertVendas(values: any) {
-    const sql = "INSERT INTO vendas (valor, forma_pagamento, complementos) VALUES (?, ?, ?)"
+export async function postVendas(values: any) {
+    const sql = "INSERT INTO vendas (valor, forma_pagamento) VALUES (?, ?)"
     const result = await db.query(sql, values)
 
     return result

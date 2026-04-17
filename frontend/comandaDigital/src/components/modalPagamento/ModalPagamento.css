@@ -1,31 +1,84 @@
-.container-modalPagamento{
-    width: 380px;
-    min-height: 340px;
-    border: 1px solid #aaa;
-    border-radius: 8px;
+.modalPagamento-overlay {
+  position: fixed;
+  inset: 0;                /* cobre a tela toda */
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.modalPagamento-layout{
-    display: flex;
-    justify-content: center;
+.container-modalPagamento {
+  width: 360px;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background-color: var(--bg-color);
 }
-
-.modalPagamento-layout div{
-    border: 1px solid var(--cor-fonte3);
-    border-radius: 8px;
-    height: 120px;
-    width: 160px;
-    margin: 0.25rem;
-}
-
 .closePagamento-button{
     background-color: transparent;
     border: none;   
     font-size: 1.5rem;
     cursor: pointer;
-    transition: .1s ease;
+    transition: .1s ease
 }
 
 .closePagamento-button:hover{
     color: rgb(197, 55, 55);
+}
+
+.modalPagamento-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalPagamento-titulo {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.modalPagamento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.pagamento-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 100px;
+  border: 1px solid #303030;
+  border-radius: 8px;
+  background: transparent;
+  color: #303030;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pagamento-card:hover {
+  border-color: var(--cor-fonte3);
+  color: var(--cor-fonte3);
+}
+
+.pagamento-card--ativo {
+  border-color: var(--cor-fonte3);
+  background-color: color-mix(in srgb, var(--cor-primaria) 12%, transparent);
+  color: var(--cor-fonte3);
+}
+
+.pagamento-icon {
+  font-size: 1.6rem;
+}
+
+.button-padrao2:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

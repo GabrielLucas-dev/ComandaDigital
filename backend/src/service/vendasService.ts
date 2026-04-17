@@ -7,3 +7,10 @@ export async function findVendas(): Promise<vendas[]> {
 
     return vendas
 }
+
+export async function insertVendas(values: any) {
+    const vendas = await vendasRepository.postVendas(values)
+    if(!values) throw new Error("Valor(es) faltando")
+
+    return vendas
+}

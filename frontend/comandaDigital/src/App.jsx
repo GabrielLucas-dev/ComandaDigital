@@ -42,7 +42,7 @@ function App() {
           <Route path="/produtos/filterCategorias/editCategoria/:id_categoria" element={<EditCategoria/>}/>
           <Route path="/produtos/filterComplementos/editComplemento/:id_complemento" element={<EditComplemento />}/>
 
-          {/* <Route path="/modalPagamento" element={<ModalPagamento/>}/> */}
+          <Route path="/modalPagamento" element={<ModalPagamento/>}/>
 
         </Routes>
       </BrowserRouter>

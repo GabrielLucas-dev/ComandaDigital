@@ -1,8 +1,9 @@
 import express from "express";
-import { findVendas } from "../controller/vendasController.js";
+import { findVendas, insertVendas } from "../controller/vendasController.js";
 
 const router = express.Router()
 
 router.get('/', findVendas)
+router.post('/', insertVendas)
 
 export default router

@@ -10,3 +10,13 @@ export async function findVendas(req: Request, res: Response){
         res.status(400).json({message: error.message})
     }
 }
+
+export async function insertVendas(req: Request, res: Response){
+    const values = req.body
+    try{
+        const venda = await vendasService.insertVendas(values)
+        res.status(201).json(venda)
+    } catch(error: any){
+        res.status(400).json({message: error.message})
+    }
+}

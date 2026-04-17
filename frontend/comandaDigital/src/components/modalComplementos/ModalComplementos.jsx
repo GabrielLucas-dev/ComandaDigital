@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";        
 import "./ModalComplementos.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,35 +14,24 @@ function ModalComplementos({ onClose, onConfirm }) {
       .get("http://localhost:3031/complementos")
       .then((res) => setComplementos(res.data))
       .catch((error) => console.log(error));
-
-    console.log(selecionados);
-  }, [selecionados]);
-
-  //=====================
-  // SELECIONAR COMPLEMENTOS
-  //=====================
+  }, []);                                        
 
   const toggleComplementos = (comp) => {
     setSelecionados((prev) => {
       const existe = prev.find((c) => c.id_complemento === comp.id_complemento);
-      if (existe) {
-        return prev.filter((c) => c.id_complemento !== comp.id_complemento);
-      }
-      if (prev.length > 2) return prev;
+      if (existe) return prev.filter((c) => c.id_complemento !== comp.id_complemento);
+      if (prev.length >= 2) return prev;         
       return [...prev, comp];
     });
   };
 
-  //=====================
-  // BOTAO CONFIRMAR
-  //=====================
   const handleConfirmar = () => {
     onConfirm(selecionados);
     onClose();
   };
 
-  return (
-    <>
+  return createPortal(                          
+    <div className="modalComplementos-overlay">
       <section className="container-modalComplementos">
         <div className="inner-modalComplementos">
           <div className="closeModal-complementos">
@@ -55,7 +45,7 @@ function ModalComplementos({ onClose, onConfirm }) {
           <div className="complementos-layout">
             {complementos.map((comp, i) => {
               const selecionado = selecionados.find(
-                (c) => c.id_complemento === comp.id_complemento,
+                (c) => c.id_complemento === comp.id_complemento
               );
               return (
                 <div className="complementos-card" key={i}>
@@ -72,15 +62,15 @@ function ModalComplementos({ onClose, onConfirm }) {
               );
             })}
           </div>
-
           <div className="confirm-complementos">
             <button className="button-padrao2" onClick={handleConfirmar}>
-              Confirmar Complemetos ({selecionados.length}/2)
+              Confirmar Complementos ({selecionados.length}/2)
             </button>
           </div>
         </div>
       </section>
-    </>
+    </div>,
+    document.body
   );
 }
 
