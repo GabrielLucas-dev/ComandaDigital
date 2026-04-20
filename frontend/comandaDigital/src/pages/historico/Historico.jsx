@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Historico.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Historico() {
 
+    const [vendas, setVendas] = useState([])
+    
+    useEffect(() => {
+      axios.get('http://localhost:3031/vendas')
+      .then(res => setVendas(res.data))
+      .catch(error => console.log(error))
+    }, [])
+
+
+
     const [date, setDate] = useState()
+    
+    const data = () => {
+      const dataFormat = date.split('-').reverse().join('-')
+      console.log(dataFormat)
+    }
 
   return (
     <>
@@ -19,10 +36,30 @@ function Historico() {
             </div>
             <div className="search-historico">
               <input type="date" className="date-historico" onChange={(e) => setDate(e.target.value)}/>
-              <input type="submit" value="Procurar" className="button-padrao" />
+              <input type="submit" value="Procurar" className="button-padrao" onClick={() => data()}/>
             </div>
           </div>
-          <div className="teste2">Historico (sera um map do banco de dados)</div>
+          <div className="historico-content">
+            <div className="header-historico-content">
+                <h4>Data</h4> 
+                <h4>Hora</h4> 
+                <h4>Valor</h4> 
+                <h4>Pagamento</h4>
+                <h4>Informações da venda</h4> 
+            </div>
+
+          {vendas.map((ven, i) => {
+            return(
+            <div className={`vendas-historico ${i % 2 === 0 ? '' : 'bg-cinza'}`} key={i}>
+              <p>{ven.data_venda.split('T')[0]}</p>
+              <p>{ven.data_venda.split('T')[1].split('.')[0]}</p>
+              <p>R${ven.valor}</p>
+              <p>{ven.forma_pagamento}</p>
+              <button className="button-padrao2"><Link className="infos-link">Detalhes</Link></button>
+            </div>
+          )
+          })}
+          </div>
         </div>
       </section>
     </>
