@@ -15,9 +15,6 @@ function Cart({ cart, onRemove }) {
     setIsOpenPagamento(true);
   }
 
-  console.log(cart)
-
-
   return (
     <>
       <h3>Resumo do pedido</h3>

@@ -1,9 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ModalPagamento.css";
-import { faCreditCard, faMoneyBill, faWallet, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faPix } from "@fortawesome/free-brands-svg-icons"
+import {
+  faCreditCard,
+  faMoneyBill,
+  faWallet,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { faPix } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
-import {createPortal} from 'react-dom'
+import { createPortal } from "react-dom";
+import axios from "axios";
 
 function ModalPagamento({ onClose, onConfirm, cart }) {
   const [formaPagamento, setFormaPagamento] = useState(null);
@@ -12,29 +18,49 @@ function ModalPagamento({ onClose, onConfirm, cart }) {
     { id: "dinheiro", label: "Dinheiro", icon: faMoneyBill },
     { id: "credito", label: "Crédito", icon: faCreditCard },
     { id: "debito", label: "Débito", icon: faWallet },
-    { id: "pix", label: "Pix", icon: faPix},
+    { id: "pix", label: "Pix", icon: faPix },
   ];
 
-
-  const handleConfirmVenda = () => {
+  const handleConfirmVenda = async () => {
     const venda = {
-        forma_pagamento: formaPagamento,
-        itens: cart.map((item) => ({
-            id_produto: item.id_produto,
-            nome_produto: item.nome_produto,
-            preco: item.preco_produto,
-            complementos: item.complementos
+      forma_pagamento: formaPagamento,
+      itens: cart.map((item) => ({
+        id_produto: item.id_produto,
+        nome_produto: item.nome_produto,
+        preco_unitario: item.preco_produto,
+        complementos: item.complementos,
+      })),
+      valor: cart.reduce((acc, item) => acc + Number(item.preco_produto), 0),
+    };
+
+    try {
+      const resVenda = await axios.post("http://localhost:3031/vendas", {
+        valor: venda.valor,
+        forma_pagamento: venda.forma_pagamento,
+      });
+
+      const venda_id = resVenda.data[0].insertId;
+
+      axios.post("http://localhost:3031/itensVenda", {
+        itens: venda.itens.map((item) => ({
+          preco_unitario: item.preco_unitario,
+          produto_id: item.id_produto,
+          venda_id: venda_id,
+          complementos: item.complementos,
+          nome_produto: item.nome_produto,
         })),
-        valor: cart.reduce((acc, item) => acc + Number(item.preco_produto), 0),
-        data_venda: new Date().toISOString()
+      }),
+        onConfirm?.(formaPagamento);
+        onClose();
+    } catch (error) {
+      console.log(error);
     }
 
-    onConfirm?.(formaPagamento)
-    onClose()
-  }
+    console.log(venda);
+  };
 
   return createPortal(
-    <div className="modalPagamento-overlay">        
+    <div className="modalPagamento-overlay">
       <section className="container-modalPagamento">
         <div className="modalPagamento-header">
           <p className="modalPagamento-titulo">Forma de Pagamento</p>
@@ -67,9 +93,8 @@ function ModalPagamento({ onClose, onConfirm, cart }) {
         </div>
       </section>
     </div>,
-    document.body 
-  )
-
+    document.body,
+  );
 }
 
 export default ModalPagamento;

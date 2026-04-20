@@ -9,3 +9,13 @@ export async function findItensVenda(req: Request, res: Response) {
         res.status(400).json({message: error.message})
     }
 }
+
+export async function insertItensVenda(req: Request, res: Response) {
+    const itens = req.body.itens
+    try{
+        const result = await itensVendaService.insertItensVenda(itens)
+        res.status(201).json(result)
+    } catch(error: any){
+        res.status(400).json({message: error.message})
+    }
+}
