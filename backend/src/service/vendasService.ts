@@ -14,3 +14,18 @@ export async function insertVendas(values: any) {
 
     return vendas
 }
+
+export async function findVendaByData(date: any) {
+    if(!date) throw new Error("Data não informada")
+    const vendas = await vendasRepository.getVendasByData(date)
+    if(vendas.length === 0) throw new Error("Não há vendas registradas nessa data")
+
+    return vendas
+}
+
+export async function findVendaById(id: any) {
+    if(!id) throw new Error("id não informado")
+    const venda = await vendasRepository.getVendaById(id)
+
+    return venda
+}

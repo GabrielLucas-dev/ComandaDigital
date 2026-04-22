@@ -16,6 +16,8 @@ import EditProduto from "./pages/editsForms/editProduto/EditProduto";
 import EditCategoria from "./pages/editsForms/editCategoria/EditCategoria";
 import EditComplemento from "./pages/editsForms/editComplemento/EditComplemento";
 import ModalPagamento from "./components/modalPagamento/ModalPagamento";
+import HistoricoData from './pages/historicoData/HistoricoData'
+import VendaDetails from "./components/vendaDetails/VendaDetails";
 
 function App() {
   return (
@@ -43,6 +45,10 @@ function App() {
           <Route path="/produtos/filterComplementos/editComplemento/:id_complemento" element={<EditComplemento />}/>
 
           <Route path="/modalPagamento" element={<ModalPagamento/>}/>
+
+          <Route path="/historico/:data_venda" element={<HistoricoData/>}/>
+
+          <Route path="/teste" element={<VendaDetails />}/>
 
         </Routes>
       </BrowserRouter>

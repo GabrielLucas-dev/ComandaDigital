@@ -1,0 +1,22 @@
+.vendaDetails-overlay{
+  position: fixed;   
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  inset: 0;             
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.container-vendaDetails{
+    border: 1px solid var(--cor-fonte3);
+    background-color: var(--bg-color);
+    border-radius: 16px;
+    padding: 1rem;
+    width: 400px;
+    height: 400px;
+}
