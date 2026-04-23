@@ -7,20 +7,35 @@ import VendaDetails from "../../components/vendaDetails/VendaDetails";
 
 function Historico() {
   const [vendas, setVendas] = useState([]);
+  const [vendaEsp, setVendaEsp] = useState([])
+  const [itensVenda, setItensVenda] = useState([])
 
   useEffect(() => {
     axios
       .get("http://localhost:3031/vendas")
       .then((res) => setVendas(res.data))
       .catch((error) => console.log(error));
+
+      axios.get("http://localhost:3031/itensVenda/detalhes/:venda_id")
+      .then(res => setItensVenda(res.data))
   }, []);
 
   const [date, setDate] = useState();
 
-  const [isOpen, setIsOpen] = useState(false)
-  const showDetails = (id) => {
-    setIsOpen(true)
-  }
+  const [isOpen, setIsOpen] = useState(false);
+
+  const showDetails = async (venda, id) => {
+    const res = await axios.get(`http://localhost:3031/itensVenda/detalhes/${id}`)
+    setItensVenda(res.data)
+    setVendaEsp(venda)
+    setIsOpen(true);
+  };
+
+  const closeDetails = () => {
+    setIsOpen(false);
+  };
+
+
 
   return (
     <>
@@ -39,8 +54,8 @@ function Historico() {
                 className="date-historico"
                 onChange={(e) => setDate(e.target.value)}
               />
-              <button className="button-padrao">
-                <Link to={`/historico/${date}`} className="infos-link">
+              <button className={date ? "button-padrao" : "button-padrao disabled"}>
+                <Link to={`/historico/${date}`} className={date ? "infos-link" : "infos-link disabled"}>
                   Procurar
                 </Link>
               </button>
@@ -52,29 +67,29 @@ function Historico() {
               <h4>Hora</h4>
               <h4>Valor</h4>
               <h4>Pagamento</h4>
-              <h4>Informações da venda</h4>
             </div>
 
             {vendas.map((ven, i) => {
               return (
                 <div
-                  className={`vendas-historico ${i % 2 === 0 ? "" : "bg-cinza"}`}
-                  key={i}
-                >
-                  <p>{ven.data_venda.split("T")[0]}</p>
-                  <p>{ven.data_venda.split("T")[1].split(".")[0]}</p>
-                  <p>R${ven.valor}</p>
-                  <p>{ven.forma_pagamento}</p>
-                  <button className="button-padrao2" onClick={() => showDetails(ven.id_venda)}>
-                    Detalhes
-                  </button>
-                </div>
-              );
+                    className={`vendas-historico ${i % 2 === 0 ? "" : "bg-cinza"}`}
+                    key={i}
+                  >
+                    <p>{ven.data_venda.split("T")[0]}</p>
+                    <p>{ven.data_venda.split("T")[1].split(".")[0]}</p>
+                    <p>R${ven.valor}</p>
+                    <p>{ven.forma_pagamento}</p>
+                    <button
+                      className="button-padrao2"
+                      onClick={() => showDetails(ven, ven.id_venda)}
+                    >
+                      Detalhes
+                    </button>
+                  </div>
+                );
             })}
+            {isOpen ? <VendaDetails onClose={closeDetails} venda={vendaEsp} itens={itensVenda} /> : ""}
           </div>
-
-            {isOpen ? <VendaDetails /> : ''}
-
         </div>
       </section>
     </>

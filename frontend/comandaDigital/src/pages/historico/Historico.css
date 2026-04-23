@@ -83,3 +83,13 @@
 .gap{
   margin-left: 0.5rem;
 }
+
+.no-vendas{
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -41,10 +41,11 @@ function HistoricoData() {
                 <h4>Hora</h4> 
                 <h4>Valor</h4> 
                 <h4>Pagamento</h4>
-                <h4>Informações da venda</h4> 
             </div>
 
-          {vendasData.map((ven, i) => {
+        {vendasData.length > 0 
+        ? 
+        vendasData.map((ven, i) => {
             return(
             <div className={`vendas-historico ${i % 2 === 0 ? '' : 'bg-cinza'}`} key={i}>
               <p>{ven.data_venda.split('T')[0]}</p>
@@ -54,7 +55,10 @@ function HistoricoData() {
               <button className="button-padrao2"><Link className="infos-link">Detalhes</Link></button>
             </div>
           )
-          })}
+          })
+        : <p className="no-vendas">Nenhuma venda registrada em {dateURL.data_venda}</p> 
+        }
+          
           </div>
         </div>
       </section>

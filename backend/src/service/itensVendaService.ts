@@ -13,3 +13,10 @@ export async function insertItensVenda(itens: any) {
 
   return venda;
 }
+
+export async function findItensVendaById(id: any) {
+  if(!id) throw new Error("ID não encontrado")
+  const itens = await itensVendaRepository.getItensVendaById(id)
+
+  return itens
+}

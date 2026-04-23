@@ -17,6 +17,27 @@
     background-color: var(--bg-color);
     border-radius: 16px;
     padding: 1rem;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    max-width: 500px;
+    min-width: 390px;
+    min-height: 600px;
+}
+
+.detalhes-layout{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+.detalhes-layout div{
+    width: 45%;
+}
+
+.detalhes-layout div p{
+    padding-left: 0.25rem;
+    margin-bottom: 0.4rem;
+}
+
+.itens-quantidade{
+    padding-left: 0.3rem;
+    margin: 0.5rem 0;
 }

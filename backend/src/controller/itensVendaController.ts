@@ -19,3 +19,13 @@ export async function insertItensVenda(req: Request, res: Response) {
         res.status(400).json({message: error.message})
     }
 }
+
+export async function findItensVendaById(req: Request, res: Response) {
+    const id = req.params.venda_id
+    try{
+        const result = await itensVendaService.findItensVendaById(id)
+        res.status(200).json(result)
+    } catch(error: any){
+        res.status(400).json({message: error.message})
+    }
+}

@@ -19,3 +19,10 @@ export async function postItensVenda(itens: any[]) {
     }
     return results
 }
+
+export async function getItensVendaById(id: any): Promise<itensVenda[]> {
+    const sql = "SELECT * FROM itens_venda WHERE venda_id = ?"
+    const [result] = await db.query(sql, id)
+
+    return result as itensVenda[]
+}

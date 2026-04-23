@@ -17,9 +17,5 @@ app.use("/complementos", complementosRoute)
 app.use("/vendas", vendasRoute)
 app.use("/itensVenda", itensVendaRoute)
 
-app.get("/", (req, res) => {
-  res.send({ message: "teste" });
-});
-
 const PORT: number = 3031;
 app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
