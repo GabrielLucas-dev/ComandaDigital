@@ -35,8 +35,6 @@ function Historico() {
     setIsOpen(false);
   };
 
-
-
   return (
     <>
       <section className="container-historico">
@@ -55,7 +53,7 @@ function Historico() {
                 onChange={(e) => setDate(e.target.value)}
               />
               <button className={date ? "button-padrao" : "button-padrao disabled"}>
-                <Link to={`/historico/${date}`} className={date ? "infos-link" : "infos-link disabled"}>
+                <Link to={date ? `/historico/${date}` : ''} className={date ? "infos-link" : "infos-link disabled"}>
                   Procurar
                 </Link>
               </button>

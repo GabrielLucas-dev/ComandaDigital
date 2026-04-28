@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Analises.css";
+import axios from "axios";
 
 function Analises() {
+
+  const [vendasTotal30dias, setVendasTotal30dias] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3031/analises')
+    .then(res => setVendasTotal30dias(res.data))
+  }, [])
+
   return (
     <>
       <section className="container-analises">

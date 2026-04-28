@@ -5,7 +5,6 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 // import { useEffect, useState } from "react"
 
 function VendaDetails({ onClose, venda, itens }) {
-  console.log(itens);
   const vendaArr = [venda];
 
   const count = itens.length;
