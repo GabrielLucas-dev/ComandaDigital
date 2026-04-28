@@ -4,6 +4,7 @@
 
 .inner-historico {
   width: 100vw;
+  margin-left: 5rem;
 }
 
 .header-historico {
@@ -11,9 +12,8 @@
   height: 100px;
   display: flex;
   align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid #aaaaaa;
-  display: flex;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #aaa;
   justify-content: space-between;
 }
 
@@ -22,74 +22,100 @@
 }
 
 .search-historico {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-right: 1rem;
 }
+
 .search-historico .date-historico {
-  margin-right: 1rem;
-  padding: 2px;
-  border: 1px solid #aaaaaa;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #ddd;
   border-radius: 8px;
   color: #333;
   background-color: #fff;
   outline: none;
   cursor: pointer;
+  font-size: 0.85rem;
+  transition: border 0.15s ease;
 }
-.search-historico .date-historico:focus{
-    border: 1px solid var(--cor-fonte3);
+
+.search-historico .date-historico:focus {
+  border: 1px solid var(--cor-fonte3);
 }
 
 .historico-content {
-  padding: 1rem;
+  padding: 1.5rem 2rem;
 }
 
 .header-historico-content {
-  width: 80%;
-  margin: 0 auto;  
+  width: 90%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  border-bottom: 1px solid #aaa;
-}
-.header-historico-content h4{
-    margin-bottom: 0.4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #d8d8d8;   
 }
 
-.vendas-historico{
-  width: 80%;
-  margin: 0.6rem auto;  
+.header-historico-content h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;      
+  color: #999;
+  margin-bottom: 0.4rem;
+}
+
+.vendas-historico {
+  width: 90%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding: 0.5rem 0.25rem;
+  padding: 0.65rem 0.25rem;
   align-items: center;
+  border-bottom: 1px solid #f0f0f0;   
+  transition: background 0.15s ease;
 }
 
-.vendas-historico button{
-    width: 80px;
+.vendas-historico:hover {
+  background-color: #f7f7f7;         
 }
 
-.infos-link{
-    text-decoration: none;
-    color: #fff;
-}
-.bg-cinza{
-    background-color: #bebebe;
+.vendas-historico p {
+  font-size: 0.9rem;
+  color: #444;
 }
 
-@media(max-width: 768px){
-    .vendas-historico, .header-historico-content{
-        width: 95%;
-    }
+.vendas-historico button {
+  width: 80px;
 }
 
-.gap{
-  margin-left: 0.5rem;
+/* ── zebrado mais suave ── */
+.bg-cinza {
+  background-color: #fafafa;           /* 👈 era #bebebe, muito pesado */
 }
 
-.no-vendas{
+.infos-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.no-vendas {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  color: #999;
+  font-size: 0.9rem;
 }
 
-.disabled{
+.disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .vendas-historico,
+  .header-historico-content {
+    width: 95%;
+  }
 }

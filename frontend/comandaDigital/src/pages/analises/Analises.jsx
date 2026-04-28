@@ -5,12 +5,14 @@ import axios from "axios";
 
 function Analises() {
 
-  const [vendasTotal30dias, setVendasTotal30dias] = useState([])
+  const [analises, setAnalises] = useState(null)
 
   useEffect(() => {
     axios.get('http://localhost:3031/analises')
-    .then(res => setVendasTotal30dias(res.data))
+    .then(res => setAnalises(res.data))
   }, [])
+  
+  if(!analises) return <p>Carregando...</p>
 
   return (
     <>
@@ -21,24 +23,56 @@ function Analises() {
             <h2>Análises</h2>
           </div>
 
+          <div className="analises-title"><h3>Ultimos 30 dias</h3></div>
+
           <div className="div-analises">
             <div className="analise">
-              <h4>Total recebido</h4>
-              <p>R$: 1500,00</p>
+              <h4>Valor vendido</h4>
+              <p>R${analises.valorVendas30dias[0]["SUM(valor)"]}</p>
             </div>
             <div className="analise">
-              <h4>Numero de vendas</h4>
-              <p>150</p>
+              <h4>Numero total de vendas</h4>
+              <p>{analises.totalVendas30dias[0]["COUNT(*)"]}</p>
             </div>
             <div className="analise">
-              <h4>Ticket médio:</h4>
-              <p>R$: 10,00</p>
+              <h4>Ticket médio</h4>
+              <p>R${Number(analises.ticketMedio30dias[0]["AVG(valor)"]).toFixed(2)}</p>
             </div>
             <div className="analise">
               <h4>Grafico - Formas de pagamento</h4>
-              <p>grafico</p>
+              <p>Pix: {analises.formaPagamentoPix30dias[0]["COUNT(forma_pagamento)"]}</p>
+              <p>Débito: {analises.formaPagamentoDebito30dias[0]["COUNT(forma_pagamento)"]}</p>
+              <p>Crédito: {analises.formaPagamentoCredito30dias[0]["COUNT(forma_pagamento)"]}</p>
+              <p>Dinheiro: {analises.formaPagamentoDinheiro30dias[0]["COUNT(forma_pagamento)"]}</p>
             </div>
           </div>
+
+          <hr />
+
+          <div className="analises-title"><h3>Histórico Completo</h3></div>
+
+          <div className="div-analises">
+            <div className="analise">
+              <h4>Valor vendido</h4>
+              <p>R${analises.valorVendas30dias[0]["SUM(valor)"]}</p>
+            </div>
+            <div className="analise">
+              <h4>Numero total de vendas</h4>
+              <p>{analises.totalVendas30dias[0]["COUNT(*)"]}</p>
+            </div>
+            <div className="analise">
+              <h4>Ticket médio</h4>
+              <p>R${Number(analises.ticketMedio30dias[0]["AVG(valor)"]).toFixed(2)}</p>
+            </div>
+            <div className="analise">
+              <h4>Grafico - Formas de pagamento</h4>
+              <p>Pix: {analises.formaPagamentoPix30dias[0]["COUNT(forma_pagamento)"]}</p>
+              <p>Débito: {analises.formaPagamentoDebito30dias[0]["COUNT(forma_pagamento)"]}</p>
+              <p>Crédito: {analises.formaPagamentoCredito30dias[0]["COUNT(forma_pagamento)"]}</p>
+              <p>Dinheiro: {analises.formaPagamentoDinheiro30dias[0]["COUNT(forma_pagamento)"]}</p>
+            </div>
+          </div>
+
         </div>
       </section>
     </>

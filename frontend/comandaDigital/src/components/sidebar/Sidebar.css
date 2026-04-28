@@ -2,6 +2,10 @@
     width: 5rem;
     height: 100vh;
     border-right: 1px solid #aaaaaa;
+    position: fixed; /* <- faz ficar fixa */
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .inner-title{

@@ -63,7 +63,7 @@ function AddProduto() {
             </div>
             <div className="category">
               <div>
-                <label htmlFor="">Categoria</label>
+                <label>Categoria</label>
               </div>
               <select
                 value={selecionado}

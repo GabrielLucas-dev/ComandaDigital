@@ -1,6 +1,3 @@
-/* ========================
-   LAYOUT PRINCIPAL
-   ======================== */
 .container-vendas {
     display: flex;
     height: 100vh;
@@ -8,13 +5,13 @@
     overflow: hidden;
 }
 
-/* Área central (header + conteúdo) */
 .teste {
     flex: 1;
-    min-width: 0; /* evita overflow em flex children */
+    min-width: 0; 
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-left: 5rem;
 }
 
 /* ========================
