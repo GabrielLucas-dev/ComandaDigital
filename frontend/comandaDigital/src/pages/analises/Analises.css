@@ -67,15 +67,8 @@ hr {
 }
 
 .analise p {
-  font-size: 1.25rem;     
+  font-size: 1.2rem;     
   font-weight: 700;
-  color: var(--cor-fonte3);
+  color: #606060;
   line-height: 1.2;
-}
-
-.analise p + p{
-  font-size: 1rem;
-  font-weight: 500;
-  color: #555;
-  margin-top: 0.2rem;
 }
