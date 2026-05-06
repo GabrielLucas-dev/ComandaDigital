@@ -71,16 +71,25 @@ function Vendas() {
   //==========================
 
   function removeProd(index) {
-    // const produto = setCart(prev => prev.id_produto === prod.id_produto)
     setCart((prev) => prev.filter((_, i) => i !== index));
   }
 
   //==========================
-  // SHOW CATEGORIA
+  // SHOW CATEGORIA|PRODUTOS
   //==========================
 
   const [categoriaAtiva, setCategoriaAtiva] = useState(null);
-  const produtosFiltrados = categoriaAtiva ? produtos.filter(p => p.nome_categoria === categoriaAtiva) : produtos
+  const [produtosText, setProdutosText] = useState(null);
+  const produtosFiltrados = categoriaAtiva
+    ? produtos.filter((p) => p.nome_categoria === categoriaAtiva)
+    .filter((p) => produtosText ? p.nome_produto.toLoweCase().includes(produtosText.toLoweCase()) : true)  //ARRUMAR ISSO
+    : produtos;
+
+  // function filterProdutos(prod, prodText) {
+  //   return prod.filter((p) => p.nome_produto.includes(prodText) || p.nome_categoria.includes(prodText))
+  // }
+
+  // const foundProds = filterProdutos(produtos, produtosText)  
 
   return (
     <>
@@ -95,7 +104,7 @@ function Vendas() {
               </h2>
             </div>
             <div className="div-search">
-              <input type="text" placeholder="Pesquisar..." />
+              <input type="text" placeholder="Pesquisar..." onChange={e => setProdutosText(e.target.value)} />
             </div>
           </div>
 
@@ -104,13 +113,24 @@ function Vendas() {
               <div className="itens-list">
                 <ul>
                   <li>
-                    <button className="list-button" onClick={() => setCategoriaAtiva(null)}>Todos</button>
+                    <button
+                      className={categoriaAtiva === null ? "ativo" : ""}
+                      onClick={() => setCategoriaAtiva(null)}
+                    >
+                      Todos
+                    </button>
                   </li>
                   {categorias.map((cat, i) => {
                     return (
                       <li key={i}>
-                        {/* fazer onClick para setar a categoria como o nome da clicada e fazer uma logica pra mostrar apenas o itens com a categoria que tem o nome */}
-                        <button onClick={() => setCategoriaAtiva(cat.nome_categoria)}>{cat.nome_categoria}</button>
+                          <button
+                          onClick={() => setCategoriaAtiva(cat.nome_categoria)}
+                          className={
+                            categoriaAtiva === cat.nome_categoria ? "ativo" : ""
+                          }
+                        >
+                          {cat.nome_categoria}
+                        </button>
                       </li>
                     );
                   })}
@@ -136,6 +156,24 @@ function Vendas() {
                 })}
               </div>
             </div>
+
+            {/* <div>
+              teste
+            {foundProds.map((p, i) => {
+               return (
+                    <div className="card-venda" key={i}>
+                      <p>{p.nome_produto}</p>
+                      <h4>R${p.preco_produto}</h4>
+                      <button
+                        className="button-padrao2"
+                        onClick={() => handleAddProduto(p)}
+                      >
+                        Adicionar ao carrinho
+                      </button>
+                    </div>
+                  );
+            })}
+            </div> */}
 
             <div className="modal-complementos">
               {isOpen ? (
