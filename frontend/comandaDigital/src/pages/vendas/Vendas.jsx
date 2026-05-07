@@ -81,9 +81,10 @@ function Vendas() {
   const [categoriaAtiva, setCategoriaAtiva] = useState(null);
   const [produtosText, setProdutosText] = useState(null);
   const produtosFiltrados = categoriaAtiva
-    ? produtos.filter((p) => p.nome_categoria === categoriaAtiva)
-    .filter((p) => produtosText ? p.nome_produto.toLoweCase().includes(produtosText.toLoweCase()) : true)  //ARRUMAR ISSO
+    ? produtos.filter((p) => p.nome_categoria === categoriaAtiva) 
+    // .filter((p) => produtosText ? p.nome_produto.toLoweCase().includes(produtosText.toLoweCase()) : true)  //ARRUMAR ISSO
     : produtos;
+    const produtosFiltradosText = produtosFiltrados.filter((p) => produtosText ? p.nome_produto.includes(produtosText) : <p>Nada encotrado</p>)   
 
   // function filterProdutos(prod, prodText) {
   //   return prod.filter((p) => p.nome_produto.includes(prodText) || p.nome_categoria.includes(prodText))
@@ -140,7 +141,7 @@ function Vendas() {
 
             <div className="vendas-content">
               <div className="vendas-layout">
-                {produtosFiltrados.map((prod, i) => {
+                {produtosFiltradosText.map((prod, i) => {
                   return (
                     <div className="card-venda" key={i}>
                       <p>{prod.nome_produto}</p>

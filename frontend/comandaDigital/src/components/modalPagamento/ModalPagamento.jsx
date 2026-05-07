@@ -52,11 +52,14 @@ function ModalPagamento({ onClose, onConfirm, cart }) {
       }),
         onConfirm?.(formaPagamento);
         onClose();
+        cart = [];
     } catch (error) {
       console.log(error);
     }
 
     console.log(venda);
+
+    
   };
 
   return createPortal(

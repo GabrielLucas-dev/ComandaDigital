@@ -20,6 +20,7 @@ function ModalComplementos({ onClose, onConfirm }) {
     setSelecionados((prev) => {
       const existe = prev.find((c) => c.id_complemento === comp.id_complemento);
       if (existe) return prev.filter((c) => c.id_complemento !== comp.id_complemento);
+      // REGRA DE NEGOCIO, deve ser adaptada a cada estabeleciento 
       if (prev.length >= 2) return prev;         
       return [...prev, comp];
     });
