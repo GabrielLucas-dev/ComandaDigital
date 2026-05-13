@@ -16,7 +16,7 @@
 }
 
 .analises-title {
-  margin: 1.75rem 0 1rem 0;
+  margin: 1.75rem 0 0.75rem 0;
   padding: 0 10%;
 }
 
@@ -72,3 +72,28 @@ hr {
   color: #606060;
   line-height: 1.2;
 }
+
+.analises-search{
+  display: flex;
+  width: 80%;
+  margin: 0 auto 1rem auto;
+  align-items: flex-end;
+}
+
+.search-box{
+  margin: 0 1rem 0 0;
+  height: auto;
+}
+
+.search-box label{
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+}
+
+.search-box-button{
+  margin-left: 1rem;
+}
+

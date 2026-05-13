@@ -1,8 +1,10 @@
 import express from 'express'
-import { analises } from '../controller/analisesController.js';
+import { getAnalises30dias, getAnalisesGerais, getAnalisesPeriodo } from '../controller/analisesController.js';
 
 const router = express.Router();
 
-router.get('/', analises)
+router.get('/30dias', getAnalises30dias)
+router.get('/gerais', getAnalisesGerais)
+router.get('/periodo', getAnalisesPeriodo)
 
 export default router

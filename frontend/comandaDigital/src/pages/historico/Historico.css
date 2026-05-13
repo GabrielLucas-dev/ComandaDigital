@@ -28,8 +28,8 @@
   margin-right: 1rem;
 }
 
-.search-historico .date-historico {
-  padding: 0.4rem 0.75rem;
+.date-historico {
+  padding: 0.2rem 0.75rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   color: #333;
@@ -40,7 +40,7 @@
   transition: border 0.15s ease;
 }
 
-.search-historico .date-historico:focus {
+.date-historico:focus {
   border: 1px solid var(--cor-fonte3);
 }
 
