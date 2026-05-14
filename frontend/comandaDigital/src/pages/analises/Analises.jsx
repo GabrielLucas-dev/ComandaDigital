@@ -11,6 +11,8 @@ function Analises() {
   const [dataInicio, setDataInicio] = useState();
   const [dataFim, setDataFim] = useState();
 
+  
+
   useEffect(() => {
     axios
       .get("http://localhost:3031/analises/30dias")
@@ -27,7 +29,7 @@ function Analises() {
       .then((res) => setAnalisesPeriodo(res.data));
   }, [dataInicio, dataFim]);
 
-  console.log(analisesPeriodo)
+  //Fazer logica de negocio para aparecer mensagem naa tela caso dataInicio > dataFim
 
   if (!analises30dias) return <p>Carregando...</p>;
   if (!analisesGerais) return <p>Carregando...</p>;

@@ -17,7 +17,9 @@ function Cart({ cart, onRemove }) {
 
   return (
     <>
+    <div className="cart-title">
       <h3>Resumo do pedido</h3>
+    </div>
       <hr />
 
       <div className="cart-content">

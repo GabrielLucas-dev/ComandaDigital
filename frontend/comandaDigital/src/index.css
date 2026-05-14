@@ -16,35 +16,52 @@
   list-style: none;
 }
 
-.button-padrao{
-    border-radius: 8px;
-    padding: 0.4rem 1rem;
-    color: #fff;
-    background-color: var(--cor-fonte3);
-    border: 1px solid var(--cor-fonte3);
-    cursor: pointer;
-    transition: .2s ease;
-    font-size: 1rem;
-    text-decoration: none;
+.button-padrao {
+  border-radius: 8px;
+  padding: 0.45rem 1.125rem;
+  color: #fff;
+  background-color: var(--cor-fonte3);
+  border: none;                        /* 👈 sem border, mais limpo */
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  font-size: 0.9rem;
+  font-weight: 600;                    /* 👈 peso maior */
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.button-padrao:hover{
-    border: 1px solid var(--cor-fonte4);
-    background-color: var(--cor-fonte4);
+.button-padrao:hover {
+  background-color: var(--cor-fonte4);
 }
 
-.button-padrao2{
-    border-radius: 8px;
-    padding: 0.3rem 0.5rem;
-    color: #fff;
-    background-color: var(--cor-fonte3);
-    border: 1px solid var(--cor-fonte3);
-    cursor: pointer;
-    transition: .2s ease;
-    font-size: 0.9rem;
-    text-decoration: none;
+.button-padrao:active {
+  transform: scale(0.97);              /* 👈 feedback de clique */
 }
-.button-padrao2:hover{
-    border: 1px solid var(--cor-fonte4);
-    background-color: var(--cor-fonte4);
+
+.button-padrao2 {
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  color: #fff;
+  background-color: var(--cor-fonte3);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-padrao2:hover {
+  background-color: var(--cor-fonte4);
+}
+
+.button-padrao2:active {
+  transform: scale(0.97);
 }

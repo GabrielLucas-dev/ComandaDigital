@@ -1,64 +1,99 @@
-.container-sidebar{
-    width: 5rem;
-    height: 100vh;
-    border-right: 1px solid #aaaaaa;
-    position: fixed; /* <- faz ficar fixa */
-    top: 0;
-    left: 0;
-    z-index: 1000;
+.container-sidebar {
+  width: 5rem;
+  height: 100vh;
+  border-right: 1px solid #e0e0e0;     /* 👈 mais suave */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;              /* 👈 facilita o layout vertical */
 }
 
-.inner-title{
-    padding: 1rem 0.5rem;
-    text-align: center;
+/* ── logo ── */
+.inner-title {
+  padding: 1.25rem 0.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;   /* 👈 separador sutil abaixo do logo */
 }
 
-.inner-title img{
-    width: 3.5rem;
+.inner-title img {
+  width: 3rem;
 }
 
-.div-links{
-    width: 100%;
-    text-align: center;
+/* ── links ── */
+.div-links {
+  flex: 1;                             /* 👈 empurra o div-infos pro fundo */
+  width: 100%;
 }
 
-.div-links ul{
-    padding: 0.25rem;
-    margin-top: 0.5rem;
+.div-links ul {
+  padding: 0.75rem 0.5rem;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;                        /* 👈 gap em vez de margin em cada li */
 }
 
-.div-links ul li{
-    margin: 1rem 0;
-    cursor: pointer;
-    font-size: 1.4rem;
+.div-links ul li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.div-links ul li .links{
-    color: #000;
-    transition: .2s ease;
+.div-links ul li .links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;                 /* 👈 área clicável com fundo arredondado */
+  color: #aaa;
+  font-size: 1.25rem;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
 }
 
-.div-links ul li .links:hover{
-    color: var(--cor-fonte3);
+.div-links ul li .links:hover {
+  background-color: #f5f5f5;
+  color: var(--cor-fonte3);
 }
 
-.div-infos{
-    position: absolute;
-    bottom: 1rem;
-    left: 1.5rem;
+.div-links ul li .links.active {
+  background-color: color-mix(in srgb, var(--cor-fonte3) 12%, transparent); /* 👈 fundo suave no ativo */
+  color: var(--cor-fonte3);
 }
 
-.div-infos ul li{
-    cursor: pointer;
-    transition: .2s ease;
-    font-size: 1.25rem;
+/* ── info no rodapé ── */
+.div-infos {
+  padding: 1rem 0;
+  border-top: 1px solid #f0f0f0;      /* 👈 separador acima */
+  display: flex;
+  justify-content: center;
 }
 
-.div-infos ul li:hover{
-    color: var(--cor-fonte3);
+.div-infos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
+.div-infos ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #aaa;
+  transition: background 0.15s ease, color 0.15s ease;
+}
 
-.div-links ul li .links.active{
-    color: var(--cor-fonte3);
+.div-infos ul li:hover {
+  background-color: #f5f5f5;
+  color: var(--cor-fonte3);
 }

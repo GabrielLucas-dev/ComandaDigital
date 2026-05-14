@@ -3,8 +3,8 @@
   border-bottom: 2px solid #e0e0e0;
 }
 
-.cart-header h3 {
-  font-size: 0.75rem;
+.cart-title h3{
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
