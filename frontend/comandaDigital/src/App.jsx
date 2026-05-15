@@ -18,12 +18,16 @@ import EditComplemento from "./pages/editsForms/editComplemento/EditComplemento"
 import ModalPagamento from "./components/modalPagamento/ModalPagamento";
 import HistoricoData from './pages/historicoData/HistoricoData'
 import VendaDetails from "./components/vendaDetails/VendaDetails";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+
+          <Route path="/login" element={<Login/>}/>
+
           <Route path="/pdv" element={<Pdv />} />
           <Route path="/vendas" element={<Vendas />} />
           <Route path="/historico" element={<Historico />} />

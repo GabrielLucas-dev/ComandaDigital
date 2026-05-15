@@ -21,11 +21,11 @@
   padding: 0.45rem 1.125rem;
   color: #fff;
   background-color: var(--cor-fonte3);
-  border: none;                        /* 👈 sem border, mais limpo */
+  border: none;                        
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
   font-size: 0.9rem;
-  font-weight: 600;                    /* 👈 peso maior */
+  font-weight: 600;                    
   letter-spacing: 0.02em;
   text-decoration: none;
   display: inline-flex;
@@ -38,7 +38,7 @@
 }
 
 .button-padrao:active {
-  transform: scale(0.97);              /* 👈 feedback de clique */
+  transform: scale(0.97);             
 }
 
 .button-padrao2 {
@@ -64,4 +64,8 @@
 
 .button-padrao2:active {
   transform: scale(0.97);
+}
+
+h2{
+  font-weight: 500;
 }
