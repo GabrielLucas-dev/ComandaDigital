@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Historico.css";
-import axios from "axios";
+import api from "../../api/Api";
 import { Link } from "react-router-dom";
 import VendaDetails from "../../components/vendaDetails/VendaDetails";
 
@@ -11,12 +11,11 @@ function Historico() {
   const [itensVenda, setItensVenda] = useState([])
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3031/vendas")
+    api.get("http://localhost:3031/vendas")
       .then((res) => setVendas(res.data))
       .catch((error) => console.log(error));
 
-      axios.get("http://localhost:3031/itensVenda/detalhes/:venda_id")
+      api.get("http://localhost:3031/itensVenda/detalhes/:venda_id")
       .then(res => setItensVenda(res.data))
   }, []);
 
@@ -25,7 +24,7 @@ function Historico() {
   const [isOpen, setIsOpen] = useState(false);
 
   const showDetails = async (venda, id) => {
-    const res = await axios.get(`http://localhost:3031/itensVenda/detalhes/${id}`)
+    const res = await api.get(`http://localhost:3031/itensVenda/detalhes/${id}`)
     setItensVenda(res.data)
     setVendaEsp(venda)
     setIsOpen(true);

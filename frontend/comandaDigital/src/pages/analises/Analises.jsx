@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Analises.css";
-import axios from "axios";
+import api from "../../api/Api";
 
 function Analises() {
   const [analises30dias, setAnalises30dias] = useState(null);
@@ -14,15 +14,15 @@ function Analises() {
   
 
   useEffect(() => {
-    axios
+    api
       .get("http://localhost:3031/analises/30dias")
       .then((res) => setAnalises30dias(res.data));
 
-    axios
+    api
       .get("http://localhost:3031/analises/gerais")
       .then((res) => setAnalisesGerais(res.data));
 
-    axios
+    api
       .get(
         `http://localhost:3031/analises/periodo?data_inicio=${dataInicio}&data_fim=${dataFim}`,
       )

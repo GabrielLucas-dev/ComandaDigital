@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-// import "./Historico.css";
-import axios from "axios";
+import api from "../../api/Api";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import VendaDetails from "../../components/vendaDetails/VendaDetails";
@@ -11,8 +10,7 @@ function HistoricoData() {
   const dateURL = useParams();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3031/vendas/${dateURL.data_venda}`)
+    api.get(`http://localhost:3031/vendas/${dateURL.data_venda}`)
       .then((res) => setVendasData(res.data))
       .catch((error) => console.log(error));
   }, [dateURL]);
@@ -25,7 +23,7 @@ function HistoricoData() {
   const [vendaEsp, setVendaEsp] = useState([]);
 
   const showDetails = async (venda, id) => {
-    const res = await axios.get(
+    const res = await api.get(
       `http://localhost:3031/itensVenda/detalhes/${id}`,
     );
     setItensVenda(res.data);

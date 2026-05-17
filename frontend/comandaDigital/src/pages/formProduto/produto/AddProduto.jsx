@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./AddProduto.css";
-import axios from "axios";
+import api from "../../../api/Api";
 import { useEffect, useState } from "react";
 
 function AddProduto() {
@@ -9,7 +9,7 @@ function AddProduto() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios
+    api
       .get("http://localhost:3031/categorias")
       .then((res) => {
         setCategorias(res.data)
@@ -25,7 +25,7 @@ function AddProduto() {
     e.preventDefault()
     if(selecionado === "selecione") return alert('Escolha alguma categoria!')
 
-    axios.post('http://localhost:3031/produtos', {
+    api.post('http://localhost:3031/produtos', {
       nome_produto: produto,
       preco_produto: preco,
       categoria_id: selecionado

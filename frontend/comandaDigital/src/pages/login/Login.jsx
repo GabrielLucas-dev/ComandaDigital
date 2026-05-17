@@ -1,20 +1,32 @@
 import "./Login.css";
 import comandaDigital from "../../assets/comandaDigital_icon2.png";
 import { useState } from "react";
-import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
+import api from '../../api/Api'
 
 function Login() {
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const login = {email, senha}
+    const navigate = useNavigate()
 
-    function handleLoginSubmit() {
-        axios.post("http://localhost:3031/usuarios", login)
+    function handleLoginSubmit(e) {
+        e.preventDefault()
+
+        api.post("/usuarios/login", login)
         .then(res => {
-            if(res.data > 0) return console.log('Usuário existe')
+            console.log(res.data)
+
+            localStorage.setItem("token", res.data.token)
+            console.log("TOKEN: " + localStorage.getItem("token"))
+
+            navigate('/vendas')
         })
-        .catch(error => console.log({message: "erro tal: "+error.message}))
+        .catch(error => {
+            if(error.status === 400) return alert("email e/ou senha incorreto(s)")
+            return console.log(error)
+        })
     }
 
   return (
@@ -27,6 +39,7 @@ function Login() {
               Comanda<span>Digital</span>
             </h3>
           </div>
+          <form onSubmit={handleLoginSubmit}>
           <div className="login-fields">
             <div className="field">
               <label htmlFor="">Email</label>
@@ -37,9 +50,10 @@ function Login() {
               <input type="password" onChange={e => setSenha(e.target.value)} required/>
             </div>
           </div>
-          <div>
-            <button className="button-padrao2 entrar" onClick={handleLoginSubmit}>Entrar</button>
+          <div className="submit-login">
+            <button type="submit" className="button-padrao2 entrar">Entrar</button>
           </div>
+          </form>
         </div>
       </section>
     </>

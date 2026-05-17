@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/Api";
 import { Link } from "react-router-dom";
 
 function ComplementosFilter() {
   const [complementos, setComplementos] = useState([]);
 
   useEffect(() => {
-    axios
+    api
       .get("http://localhost:3031/complementos")
       .then((res) => setComplementos(res.data))
       .catch((error) => console.log(error));
   }, []);
 
   const handleDelete = async (id_complemento) => {
-  axios.delete(`http://localhost:3031/complementos/${id_complemento}`)
+  api.delete(`http://localhost:3031/complementos/${id_complemento}`)
     .then(res => console.log(res.data))
     .catch(error => console.log(error))
 

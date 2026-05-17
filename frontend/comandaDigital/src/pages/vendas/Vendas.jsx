@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Vendas.css";
-import axios from "axios";
+import api from "../../api/Api";
 import Cart from "../../components/cart/Cart";
 import ModalComplementos from "../../components/modalComplementos/ModalComplementos";
 
 function Vendas() {
+
+  const token = localStorage.getItem("token")
+  if(!token) alert("sem token")
+
   const [categorias, setCategorias] = useState([]);
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3031/categorias").then((res) => {
+    api.get("/categorias").then((res) => {
       setCategorias(res.data);
     });
 
-    axios
-      .get("http://localhost:3031/produtos")
+    api
+      .get("/produtos")
       .then((res) => setProdutos(res.data))
       .catch((error) => console.log(error));
   }, []);

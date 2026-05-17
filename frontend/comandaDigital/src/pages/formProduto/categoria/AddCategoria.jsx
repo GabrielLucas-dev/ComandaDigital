@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import axios from 'axios'
+import api from '../../../api/Api'
 import { useState } from "react"
 
 function AddCategoria() {
@@ -10,7 +10,7 @@ function AddCategoria() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    axios.post('http://localhost:3031/categorias', {nome_categoria: nomeCategoria})
+    api.post('http://localhost:3031/categorias', {nome_categoria: nomeCategoria})
     .then(res => {
       console.log(res.data)
       navigate('/produtos/filterCategorias')

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";        
 import "./ModalComplementos.css";
-import axios from "axios";
+import api from "../../api/Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,7 +10,7 @@ function ModalComplementos({ onClose, onConfirm }) {
   const [selecionados, setSelecionados] = useState([]);
 
   useEffect(() => {
-    axios
+    api
       .get("http://localhost:3031/complementos")
       .then((res) => setComplementos(res.data))
       .catch((error) => console.log(error));

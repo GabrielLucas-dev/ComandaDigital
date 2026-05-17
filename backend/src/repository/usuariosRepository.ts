@@ -10,7 +10,7 @@ export async function getUsuarios(): Promise<usuario[]> {
 
 export async function getUsuarioLogin(email: string, senha: string): Promise<usuario> {
     const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?"
-    const [result] = db.query(sql, [email, senha])
+    const [result] = await db.query(sql, [email, senha])
 
     return result[0] as usuario;
 }

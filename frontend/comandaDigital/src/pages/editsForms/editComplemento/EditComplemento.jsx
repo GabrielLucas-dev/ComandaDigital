@@ -1,4 +1,4 @@
-import axios from "axios"
+import api from "../../../api/Api"
 import { useEffect, useState } from "react"
 import {Link, useParams, useNavigate} from 'react-router-dom'
 
@@ -12,7 +12,7 @@ function EditComplemento () {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:3031/complementos/${id_complemento}`)
+        api.get(`http://localhost:3031/complementos/${id_complemento}`)
         .then(res => setForm(res.data))
         .catch(error => console.log(error))
     }, [id_complemento])
@@ -20,7 +20,7 @@ function EditComplemento () {
     function handleEditSubmit(e) {
         e.preventDefault()
 
-        axios.put(`http://localhost:3031/complementos/${id_complemento}`, form)
+        api.put(`http://localhost:3031/complementos/${id_complemento}`, form)
         .then(res => {
             console.log(res.data)
             navigate('/produtos/filterComplementos')

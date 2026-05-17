@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../../api/Api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,13 +6,13 @@ function CategoriasFilter() {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3031/categorias")
+    api.get("http://localhost:3031/categorias")
       .then((res) => setCategorias(res.data))
       .catch((error) => console.log(error));
   }, []);
 
   const handleDelete = async (id_categoria) => {
-    axios.delete(`http://localhost:3031/categorias/${id_categoria}`)
+    api.delete(`http://localhost:3031/categorias/${id_categoria}`)
     .then(res => console.log(res.data))
     .catch(error => console.log(error))
 

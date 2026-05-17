@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./EditProduto.css";
-import axios from "axios";
+import api from "../../../api/Api";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 function EditProduto() {
@@ -13,11 +13,11 @@ function EditProduto() {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:3031/produtos/${id_produto}`)
+    api.get(`http://localhost:3031/produtos/${id_produto}`)
     .then((res) => setForm(res.data))
     .catch((error) => console.log(error));
 
-    axios.get("http://localhost:3031/categorias")
+    api.get("http://localhost:3031/categorias")
     .then((res) => setCategorias(res.data))
     .catch((error) => console.log(error));
   }, [id_produto]);
@@ -27,7 +27,7 @@ function EditProduto() {
   function handleEditSubmit(e) {
     e.preventDefault();
 
-    axios.put(`http://localhost:3031/produtos/${id_produto}`, form)
+    api.put(`http://localhost:3031/produtos/${id_produto}`, form)
       .then((res) => {
         console.log(res.data)
 

@@ -4,6 +4,6 @@ import { getUsuarioLogin, getUsuarios } from '../controller/usuariosController.j
 const router = express.Router();
 
 router.get('/', getUsuarios)
-router.get('/', getUsuarioLogin);
+router.post('/login', getUsuarioLogin);
 
 export default router;

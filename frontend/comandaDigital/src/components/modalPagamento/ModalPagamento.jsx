@@ -9,7 +9,7 @@ import {
 import { faPix } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import axios from "axios";
+import api from "../../api/Api";
 
 function ModalPagamento({ onClose, onConfirm, cart }) {
   const [formaPagamento, setFormaPagamento] = useState(null);
@@ -34,14 +34,14 @@ function ModalPagamento({ onClose, onConfirm, cart }) {
     };
 
     try {
-      const resVenda = await axios.post("http://localhost:3031/vendas", {
+      const resVenda = await api.post("http://localhost:3031/vendas", {
         valor: venda.valor,
         forma_pagamento: venda.forma_pagamento,
       });
 
       const venda_id = resVenda.data[0].insertId;
 
-      axios.post("http://localhost:3031/itensVenda", {
+      api.post("http://localhost:3031/itensVenda", {
         itens: venda.itens.map((item) => ({
           preco_unitario: item.preco_unitario,
           produto_id: item.id_produto,
