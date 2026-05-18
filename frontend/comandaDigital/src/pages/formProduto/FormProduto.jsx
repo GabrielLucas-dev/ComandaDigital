@@ -2,8 +2,11 @@ import { Link } from "react-router-dom"
 import "./FormProduto.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faBoxOpen, faTag, faListCheck } from '@fortawesome/free-solid-svg-icons'
+import { useAuth } from "../../hooks/useAuth"
 
 function FormProduto() {
+    useAuth();
+
     return(
         <>
         <section className="container-formProduto">

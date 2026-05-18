@@ -1,8 +1,10 @@
 import api from "../../../api/Api"
 import { useEffect, useState } from "react"
 import {Link, useParams, useNavigate} from 'react-router-dom'
+import { useAuth } from "../../../hooks/useAuth";
 
 function EditComplemento () {
+  useAuth();
 
     const {id_complemento} = useParams()
     const [form, setForm] = useState({

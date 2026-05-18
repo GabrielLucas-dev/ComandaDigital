@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import "./EditProduto.css";
 import api from "../../../api/Api";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 
 function EditProduto() {
+  useAuth();
+
   const [categorias, setCategorias] = useState([]);
   const { id_produto } = useParams();
   const [form, setForm] = useState({

@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import api from '../../../api/Api'
 import { useState } from "react";
+import { useAuth } from "../../../hooks/useAuth";
 
 function AddComplemento() {
+  useAuth();
 
   const [nomeComplemento, setNomeComplemento] = useState()
   const [precoComplemento, setPrecoComplemento] = useState()

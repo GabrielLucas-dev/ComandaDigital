@@ -4,8 +4,11 @@ import "./Historico.css";
 import api from "../../api/Api";
 import { Link } from "react-router-dom";
 import VendaDetails from "../../components/vendaDetails/VendaDetails";
+import { useAuth } from "../../hooks/useAuth";
 
 function Historico() {
+  useAuth();
+
   const [vendas, setVendas] = useState([]);
   const [vendaEsp, setVendaEsp] = useState([])
   const [itensVenda, setItensVenda] = useState([])

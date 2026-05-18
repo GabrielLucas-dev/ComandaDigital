@@ -10,8 +10,11 @@ import { faPix } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import api from "../../api/Api";
+import { useAuth } from "../../hooks/useAuth";
 
 function ModalPagamento({ onClose, onConfirm, cart }) {
+  useAuth();
+
   const [formaPagamento, setFormaPagamento] = useState(null);
 
   const formas = [

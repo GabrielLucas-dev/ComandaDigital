@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../../../api/Api";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 
 function ComplementosFilter() {
+  useAuth();
+
   const [complementos, setComplementos] = useState([]);
 
   useEffect(() => {

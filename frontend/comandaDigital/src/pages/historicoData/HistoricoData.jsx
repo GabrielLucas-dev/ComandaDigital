@@ -4,8 +4,11 @@ import api from "../../api/Api";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import VendaDetails from "../../components/vendaDetails/VendaDetails";
+import { useAuth } from "../../hooks/useAuth";
 
 function HistoricoData() {
+  useAuth();
+
   const [vendasData, setVendasData] = useState([]);
   const dateURL = useParams();
 

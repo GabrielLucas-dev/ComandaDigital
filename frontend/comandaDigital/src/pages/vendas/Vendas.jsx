@@ -4,12 +4,11 @@ import "./Vendas.css";
 import api from "../../api/Api";
 import Cart from "../../components/cart/Cart";
 import ModalComplementos from "../../components/modalComplementos/ModalComplementos";
+import { useAuth } from "../../hooks/useAuth";
 
 function Vendas() {
-
-  const token = localStorage.getItem("token")
-  if(!token) alert("sem token")
-
+  useAuth();
+  
   const [categorias, setCategorias] = useState([]);
   const [produtos, setProdutos] = useState([]);
 
@@ -86,15 +85,9 @@ function Vendas() {
   const [produtosText, setProdutosText] = useState(null);
   const produtosFiltrados = categoriaAtiva
     ? produtos.filter((p) => p.nome_categoria === categoriaAtiva) 
-    // .filter((p) => produtosText ? p.nome_produto.toLoweCase().includes(produtosText.toLoweCase()) : true)  //ARRUMAR ISSO
     : produtos;
     const produtosFiltradosText = produtosFiltrados.filter((p) => produtosText ? p.nome_produto.includes(produtosText) : <p>Nada encotrado</p>)   
-
-  // function filterProdutos(prod, prodText) {
-  //   return prod.filter((p) => p.nome_produto.includes(prodText) || p.nome_categoria.includes(prodText))
-  // }
-
-  // const foundProds = filterProdutos(produtos, produtosText)  
+  
 
   return (
     <>
@@ -161,24 +154,6 @@ function Vendas() {
                 })}
               </div>
             </div>
-
-            {/* <div>
-              teste
-            {foundProds.map((p, i) => {
-               return (
-                    <div className="card-venda" key={i}>
-                      <p>{p.nome_produto}</p>
-                      <h4>R${p.preco_produto}</h4>
-                      <button
-                        className="button-padrao2"
-                        onClick={() => handleAddProduto(p)}
-                      >
-                        Adicionar ao carrinho
-                      </button>
-                    </div>
-                  );
-            })}
-            </div> */}
 
             <div className="modal-complementos">
               {isOpen ? (

@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "./AddProduto.css";
 import api from "../../../api/Api";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../hooks/useAuth";
 
 function AddProduto() {
+  useAuth();
 
   const [categorias, setCategorias] = useState([]);
   const navigate = useNavigate()

@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom"
 import api from '../../../api/Api'
 import { useState } from "react"
+import { useAuth } from "../../../hooks/useAuth";
 
 function AddCategoria() {
+  useAuth();
 
   const [nomeCategoria, setNomeCategoria] = useState('');
   const navigate = useNavigate()

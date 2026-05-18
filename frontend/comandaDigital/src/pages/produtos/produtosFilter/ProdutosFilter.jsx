@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import "./ProdutosFilter.css";
 import api from '../../../api/Api'
 import { Link } from 'react-router-dom'
+import { useAuth } from "../../../hooks/useAuth";
 
 function ProdutosFilter() {
+  useAuth();
 
     const [produtos, setProdutos] = useState([])
 

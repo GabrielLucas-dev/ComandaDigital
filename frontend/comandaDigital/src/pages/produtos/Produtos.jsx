@@ -1,12 +1,13 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Produtos.css";
+import { useAuth } from "../../hooks/useAuth";
 
 function Produtos() {
+  useAuth()
 
   const getClass = ({isActive}) => isActive ? 'li-options active2' : 'li-options'
   
-
   return (
     <>
       <section className="container-produtos">

@@ -1,8 +1,11 @@
 import api from "../../../api/Api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 
 function CategoriasFilter() {
+  useAuth();
+
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {

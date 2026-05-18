@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Analises.css";
 import api from "../../api/Api";
+import { useAuth } from "../../hooks/useAuth";
 
 function Analises() {
+  useAuth();
+
   const [analises30dias, setAnalises30dias] = useState(null);
   const [analisesGerais, setAnalisesGerais] = useState(null);
   const [analisesPeriodo, setAnalisesPeriodo] = useState(null);
