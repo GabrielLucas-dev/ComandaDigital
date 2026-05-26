@@ -3,5 +3,5 @@ export interface usuario{
     nome: string
     email: string
     senha: string
-    // cargo:
+    //cargo: Enum
 }

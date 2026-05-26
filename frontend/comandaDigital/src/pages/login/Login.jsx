@@ -16,10 +16,7 @@ function Login() {
 
         api.post("/usuarios/login", login)
         .then(res => {
-            console.log(res.data)
-
             localStorage.setItem("token", res.data.token)
-            console.log("TOKEN: " + localStorage.getItem("token"))
 
             navigate('/vendas')
         })

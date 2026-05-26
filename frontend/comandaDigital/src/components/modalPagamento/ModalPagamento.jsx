@@ -12,7 +12,7 @@ import { createPortal } from "react-dom";
 import api from "../../api/Api";
 import { useAuth } from "../../hooks/useAuth";
 
-function ModalPagamento({ onClose, onConfirm, cart }) {
+function ModalPagamento({ onClose, onConfirm, cart, setCart }) {
   useAuth();
 
   const [formaPagamento, setFormaPagamento] = useState(null);
@@ -55,14 +55,12 @@ function ModalPagamento({ onClose, onConfirm, cart }) {
       }),
         onConfirm?.(formaPagamento);
         onClose();
-        cart = [];
+        setCart([]);
     } catch (error) {
       console.log(error);
     }
 
     console.log(venda);
-
-    
   };
 
   return createPortal(

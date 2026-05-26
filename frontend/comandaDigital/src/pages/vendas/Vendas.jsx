@@ -172,7 +172,7 @@ function Vendas() {
         </div>
 
         <div className="cart">
-          <Cart cart={cart} onRemove={removeProd} />
+          <Cart cart={cart} onRemove={removeProd} setCart={setCart} />
         </div>
       </section>
     </>

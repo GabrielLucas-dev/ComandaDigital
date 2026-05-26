@@ -14,3 +14,4 @@ export async function getUsuarioLogin(email: string, senha: string): Promise<usu
 
     return result[0] as usuario;
 }
+
