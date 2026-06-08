@@ -1,4 +1,4 @@
-type statusPDV = 'aberto' | 'fechado'
+export type statusPDV = 'aberto' | 'fechado'
 
 export interface pdv{
     id_pdv: number

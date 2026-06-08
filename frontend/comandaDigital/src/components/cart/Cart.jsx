@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Cart.css";
 import ModalPagamento from "../modalPagamento/ModalPagamento";
 
-function Cart({ cart, onRemove, setCart }) {
+function Cart({ cart, onRemove, setCart }) {  
 
   const [isOpenPagamento, setIsOpenPagamento] = useState(false);
   const closeModalPag = () => setIsOpenPagamento(false);

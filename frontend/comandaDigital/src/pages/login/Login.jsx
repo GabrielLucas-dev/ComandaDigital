@@ -1,7 +1,7 @@
 import "./Login.css";
 import comandaDigital from "../../assets/comandaDigital_icon2.png";
 import { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import api from '../../api/Api'
 
 function Login() {
