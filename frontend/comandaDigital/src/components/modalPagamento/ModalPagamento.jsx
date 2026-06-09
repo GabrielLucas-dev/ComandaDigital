@@ -24,6 +24,8 @@ function ModalPagamento({ onClose, onConfirm, cart, setCart }) {
     { id: "pix", label: "Pix", icon: faPix },
   ];
 
+  // const token = localStorage.getItem('token')
+
   const handleConfirmVenda = async () => {
     const venda = {
       forma_pagamento: formaPagamento,
@@ -40,7 +42,8 @@ function ModalPagamento({ onClose, onConfirm, cart, setCart }) {
       const resVenda = await api.post("http://localhost:3031/vendas", {
         valor: venda.valor,
         forma_pagamento: venda.forma_pagamento,
-      });
+      }
+    );
 
       const venda_id = resVenda.data[0].insertId;
 

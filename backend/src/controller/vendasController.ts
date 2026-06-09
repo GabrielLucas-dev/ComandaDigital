@@ -12,8 +12,9 @@ export async function findVendas(req: Request, res: Response) {
 
 export async function insertVendas(req: Request, res: Response) {
   const values = req.body;
+  const usuario_id = (req.usuario as any).id_usuario
   try {
-    const venda = await vendasService.insertVendas(values);
+    const venda = await vendasService.insertVendas(values, usuario_id);
     res.status(201).json(venda);
   } catch (error: any) {
     res.status(400).json({ message: error.message });

@@ -19,6 +19,7 @@ import ModalPagamento from "./components/modalPagamento/ModalPagamento";
 import HistoricoData from './pages/historicoData/HistoricoData'
 import VendaDetails from "./components/vendaDetails/VendaDetails";
 import Login from "./pages/login/Login";
+import PdvConcluir from "./pages/pdvConcluir/PdvConcluir";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
           <Route path="/historico/:data_venda" element={<HistoricoData/>}/>
 
           <Route path="/teste" element={<VendaDetails />}/>
+
+          <Route path="concluirPdv" element={<PdvConcluir />}></Route>
 
         </Routes>
       </BrowserRouter>

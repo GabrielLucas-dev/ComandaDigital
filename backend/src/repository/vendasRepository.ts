@@ -8,10 +8,9 @@ export async function getVendas(): Promise<vendas[]> {
   return result as vendas[];
 }
 
-export async function postVendas(venda: any) {
-  const sql = "INSERT INTO vendas (valor, forma_pagamento) VALUES (?, ?)";
-  const values = [venda.valor, venda.forma_pagamento];
-  const result = await db.query(sql, values);
+export async function postVendas(venda: any, usuario_id: number, pdv_id: number) {
+  const sql = "INSERT INTO vendas (valor, forma_pagamento, usuario_id, pdv_id) VALUES (?, ?, ?, ?)";
+  const result = await db.query(sql, [venda.valor, venda.forma_pagamento, usuario_id, pdv_id]);
 
   return result;
 }

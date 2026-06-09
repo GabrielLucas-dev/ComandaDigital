@@ -1,6 +1,6 @@
 import "./Sidebar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faDollarSign, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faDollarSign, faCircleInfo, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 import { faClock, faChartBar } from '@fortawesome/free-regular-svg-icons'
 import comandaDigital from '../../assets/comandaDigital_icon3.png'
 import { NavLink } from 'react-router-dom'
@@ -26,6 +26,7 @@ function Sidebar() {
         </div>
         <div className="div-infos">
           <ul>
+            <li><NavLink className={getClass} to={"/concluirPdv"}><FontAwesomeIcon icon={faClipboardCheck} /></NavLink></li>
             <li><FontAwesomeIcon icon={faCircleInfo} /></li>
           </ul>
         </div>

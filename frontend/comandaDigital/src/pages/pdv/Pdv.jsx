@@ -63,7 +63,7 @@ function Pdv() {
         console.log(res.data)
     }) 
     .catch(error => console.log(error))
-  }, [])
+  }, [token])
 
   return (
     <>
