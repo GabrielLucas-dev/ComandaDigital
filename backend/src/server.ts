@@ -7,6 +7,7 @@ import vendasRoute from './routes/vendasRoute.js'
 import itensVendaRoute from './routes/itensVendaRoute.js'
 import analisesRoute from './routes/analisesRoute.js'
 import usuariosRoute from './routes/usuariosRoute.js'
+import pdvRoutes from './routes/pdvRoutes.js'
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/vendas", vendasRoute)
 app.use("/itensVenda", itensVendaRoute)
 app.use("/analises", analisesRoute)
 app.use("/usuarios", usuariosRoute)
+app.use("/pdv", pdvRoutes)
 
 const PORT: number = 3031;
 app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));

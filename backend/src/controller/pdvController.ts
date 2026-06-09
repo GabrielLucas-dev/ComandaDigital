@@ -2,7 +2,7 @@ import type { Request, Response } from 'express';
 import * as pdvService from '../service/pdvService.js'
 
 export async function createPdv(req: Request, res: Response){
-    const usuario_id = req.usuario.id_usuario
+    const usuario_id = (req.usuario as any).id_usuario
     const { saldo_inicial } = req.body
     
     try{
@@ -26,7 +26,7 @@ export async function closePdv(req: Request, res: Response){
 }
 
 export async function getActivePdv(req: Request, res: Response) {
-    const usuario_id = req.usuario.id_usuario
+    const usuario_id = (req.usuario as any).id_usuario
 
     try {
         const pdv = await pdvService.getActivePdv(usuario_id)

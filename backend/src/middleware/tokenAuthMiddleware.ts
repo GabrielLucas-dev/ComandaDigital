@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import type { NextFunction, Request, Response } from 'express'
 
-export function tokenAuth(next: NextFunction, req: Request, res: Response) {
+export function tokenAuth(req: Request, res: Response, next: NextFunction) {
     const authHeader: any = req.headers.authorization;
 
     if(!authHeader) return res.status(401).send({message: "Credenciais inválidas"});

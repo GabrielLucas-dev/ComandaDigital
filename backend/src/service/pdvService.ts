@@ -22,6 +22,6 @@ export async function closePdv(saldo_final: number, id: number){
 }
 
 export async function getActivePdv(id: number){
-    const pdv = await  pdvRepository.getActivePdv(id)
+    const pdv = await pdvRepository.getActivePdv(id)
     return pdv
 }

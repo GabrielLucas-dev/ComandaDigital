@@ -22,8 +22,8 @@ export async function closePdv(saldo_final: number, id: number){
 
 export async function getActivePdv(usuario_id: number){
     const sql = `SELECT * FROM pdv 
-    WHERE usuario_id = ? 
-    ANd status_pdv = 'aberto
+    WHERE usuario_id = ?
+    AND status_pdv = 'aberto'
     AND data_abertura = CURDATE()
     LIMIT 1`
     const [pdv] = await db.query(sql, [usuario_id])
