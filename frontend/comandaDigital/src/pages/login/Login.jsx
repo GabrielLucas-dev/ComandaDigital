@@ -18,7 +18,7 @@ function Login() {
         .then(res => {
             localStorage.setItem("token", res.data.token)
 
-            navigate('/vendas')
+            navigate('/pdv')
         })
         .catch(error => {
             if(error.status === 400) return alert("email e/ou senha incorreto(s)")

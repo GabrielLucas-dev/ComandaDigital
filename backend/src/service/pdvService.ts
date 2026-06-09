@@ -1,11 +1,18 @@
 import type { pdv } from '../model/pdv.js'
 import * as pdvRepository from '../repository/pdvRepository.js'
 
-export async function createPdv(saldo_inicial: number, usuario_id: number) {
-    const result = await pdvRepository.createPdv(saldo_inicial, usuario_id)
-    if(!result) throw new Error("Erro interno")
+export async function createPdv(usuario_id: number, saldo_inicial: number) {
 
-    return result
+    const existe = await pdvRepository.getActivePdv(usuario_id)
+    console.log(existe)
+    if(existe) {
+        throw new Error("PDV de hoje já existe")
+    } else{
+        const result = await pdvRepository.createPdv(usuario_id, saldo_inicial)
+        if(!result) throw new Error("Erro interno")
+
+        return result
+    }
 }
 
 export async function closePdv(saldo_final: number, id: number){

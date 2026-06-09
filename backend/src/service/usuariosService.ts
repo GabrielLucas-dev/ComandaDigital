@@ -18,7 +18,7 @@ export async function getUsuarioLogin(email: string, senha: string) {
 
   const JWT_SECRET: string = process.env.JWT_SECRET!;
 
-  const token = jwt.sign({ email: user.email, senha: user.senha }, JWT_SECRET, { expiresIn: "24h" });
+  const token = jwt.sign({ id_usuario: user.id_usuario, email: user.email }, JWT_SECRET, { expiresIn: "24h" });
 
   return { user, token };
 }
