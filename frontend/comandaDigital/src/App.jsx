@@ -20,6 +20,7 @@ import HistoricoData from './pages/historicoData/HistoricoData'
 import VendaDetails from "./components/vendaDetails/VendaDetails";
 import Login from "./pages/login/Login";
 import FecharPdv from "./pages/fecharPdv/FecharPdv";
+import LineGraph from "./components/lineGraphs/LineGraph";
 
 function App() {
   return (
@@ -55,7 +56,9 @@ function App() {
 
           <Route path="/teste" element={<VendaDetails />}/>
 
-          <Route path="fecharPdv" element={<FecharPdv />}></Route>
+          <Route path="fecharPdv" element={<FecharPdv />}/>
+
+          <Route path="graphTest" element={<LineGraph />}/>
 
         </Routes>
       </BrowserRouter>

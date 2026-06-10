@@ -43,3 +43,10 @@ export async function getAnalisesPdv(id: number){
 
     return result
 }
+
+export async function getPdvs30dias(){
+    const pdvs = await pdvRepository.getPdvs30dias()
+    if(!pdvs) throw new Error("Não foram encotrados PDVs nos útlimos 30 dias")
+
+    return pdvs
+}

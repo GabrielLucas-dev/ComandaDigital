@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./Analises.css";
 import api from "../../api/Api";
 import { useAuth } from "../../hooks/useAuth";
+import LineGraph from "../../components/lineGraphs/LineGraph";
 
 function Analises() {
   useAuth();
@@ -248,6 +249,8 @@ function Analises() {
           </div>
         </div>
       </section>
+
+      {/* <LineGraph /> */}
     </>
   );
 }

@@ -42,3 +42,9 @@ export async function getAnalisesPdv(id_pdv: number){
     const [status] = await db.query(sql, [id_pdv])
     return status[0]
 }
+
+export async function getPdvs30dias(){
+    const sql = "SELECT * FROM pdv WHERE data_fechamento >= DATE_SUB(NOW(), INTERVAL 30 DAY)"
+    const [result] = await db.query(sql)
+    return result
+}

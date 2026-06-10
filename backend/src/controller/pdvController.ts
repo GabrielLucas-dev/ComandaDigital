@@ -47,3 +47,12 @@ export async function getAnalisesPdv(req: Request, res: Response){
         res.status(400).json({message: error.message})
     }
 }
+
+export async function getPdvs30dias(req: Request, res: Response) {
+    try{
+        const result = await pdvService.getPdvs30dias();
+        return res.status(200).json(result)
+    } catch(error: any){
+        return res.status(400).json({message: error.message})
+    }
+}
