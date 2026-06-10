@@ -60,7 +60,6 @@ function Pdv() {
         } else{
             setPdvAberto(false)
         }
-        console.log(res.data)
     }) 
     .catch(error => console.log(error))
   }, [token])

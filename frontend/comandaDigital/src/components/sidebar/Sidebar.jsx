@@ -26,7 +26,7 @@ function Sidebar() {
         </div>
         <div className="div-infos">
           <ul>
-            <li><NavLink className={getClass} to={"/concluirPdv"}><FontAwesomeIcon icon={faClipboardCheck} /></NavLink></li>
+            <li><NavLink className={getClass} to={"/fecharPdv"}><FontAwesomeIcon icon={faClipboardCheck} /></NavLink></li>
             <li><FontAwesomeIcon icon={faCircleInfo} /></li>
           </ul>
         </div>

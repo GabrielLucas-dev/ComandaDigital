@@ -32,3 +32,14 @@ export async function getActivePdv(id: number){
     const pdv = await pdvRepository.getActivePdv(id)
     return pdv
 }
+
+export async function getAnalisesPdv(id: number){
+    if(!id) throw new Error("informe o ID do PDV")
+
+    const pdv = await pdvRepository.getPdvById(id)
+    if(!pdv) throw new Error("PDV não encontrado")
+
+    const result = await pdvRepository.getAnalisesPdv(id)
+
+    return result
+}

@@ -16,9 +16,9 @@ export async function createPdv(req: Request, res: Response){
 export async function closePdv(req: Request, res: Response){
     const id = req.params.id_pdv
     const idAsNumber = Number(id)
-    const data = req.body
+    const saldo_final = req.body.saldo_final
     try{
-        const result = await pdvService.closePdv(data, idAsNumber)
+        const result = await pdvService.closePdv(saldo_final, idAsNumber)
         return res.status(200).json(result)
     } catch(error: any){
         return res.status(400).json({message: error.message})
@@ -34,5 +34,16 @@ export async function getActivePdv(req: Request, res: Response) {
         return res.status(200).json(pdv) 
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
+    }
+}
+
+export async function getAnalisesPdv(req: Request, res: Response){
+    const id_pdv = req.params.pdv_id
+    const idAsNumber = Number(id_pdv)
+    try{
+        const status = await pdvService.getAnalisesPdv(idAsNumber)
+        res.status(200).json(status)
+    } catch(error: any){
+        res.status(400).json({message: error.message})
     }
 }
