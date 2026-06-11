@@ -21,6 +21,7 @@ import VendaDetails from "./components/vendaDetails/VendaDetails";
 import Login from "./pages/login/Login";
 import FecharPdv from "./pages/fecharPdv/FecharPdv";
 import LineGraph from "./components/lineGraphs/LineGraph";
+import LineGraphComplete from "./components/lineGraphs/LineGraphComplete";
 
 function App() {
   return (
@@ -58,7 +59,9 @@ function App() {
 
           <Route path="fecharPdv" element={<FecharPdv />}/>
 
+          {/* testes */}
           <Route path="graphTest" element={<LineGraph />}/>
+          <Route path="graphCompleteTest" element={<LineGraphComplete />}/>
 
         </Routes>
       </BrowserRouter>

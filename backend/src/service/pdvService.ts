@@ -50,3 +50,10 @@ export async function getPdvs30dias(){
 
     return pdvs
 }
+
+export async function getPdvMensal(id: number){
+    const pdvs = await pdvRepository.getPdvMensal(id)
+    if(!pdvs) throw new Error("Não há PDVs")
+
+    return pdvs
+}

@@ -48,3 +48,15 @@ export async function getPdvs30dias(){
     const [result] = await db.query(sql)
     return result
 }
+
+export async function getPdvMensal(id: number) {
+    const sql = `SELECT DATE_FORMAT(data_venda, '%Y-%m') AS mes,
+    SUM(valor) AS total_vendido,
+    COUNT(*) AS quantidade_vendas
+    FROM vendas 
+    WHERE usuario_id = ?
+    GROUP BY DATE_FORMAT(data_venda, '%Y-%m')
+    ORDER BY mes ASC`
+    const [result] = await db.query(sql, [id])
+    return result
+}

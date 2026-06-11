@@ -4,6 +4,7 @@ import "./Analises.css";
 import api from "../../api/Api";
 import { useAuth } from "../../hooks/useAuth";
 import LineGraph from "../../components/lineGraphs/LineGraph";
+import LineGraphComplete from '../../components/lineGraphs/LineGraphComplete'
 
 function Analises() {
   useAuth();
@@ -162,6 +163,10 @@ function Analises() {
                 }
               </p>
             </div>
+          </div>
+
+          <div className="graph-container">
+                <LineGraphComplete />
           </div>
 
           <hr />

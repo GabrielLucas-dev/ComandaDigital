@@ -56,3 +56,13 @@ export async function getPdvs30dias(req: Request, res: Response) {
         return res.status(400).json({message: error.message})
     }
 }
+
+export async function getPdvMensal(req: Request, res: Response){
+    const id = (req.params as any).id_usuario
+    try{
+        const result = await pdvService.getPdvMensal(id)
+        return res.status(200).json(result)
+    } catch(error: any){
+        return res.status(400).json({message: error.message})
+    }
+}
