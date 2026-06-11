@@ -33,8 +33,6 @@ function Analises() {
       .then((res) => setAnalisesPeriodo(res.data));
   }, [dataInicio, dataFim]);
 
-  //Fazer logica de negocio para aparecer mensagem naa tela caso dataInicio > dataFim
-
   if (!analises30dias) return <p>Carregando...</p>;
   if (!analisesGerais) return <p>Carregando...</p>;
   if (!analisesPeriodo) return <p>Caregando...</p>
@@ -105,6 +103,10 @@ function Analises() {
                 }
               </p>
             </div>
+          </div>
+
+          <div className="graph-container">
+                <LineGraph />
           </div>
 
           <hr />

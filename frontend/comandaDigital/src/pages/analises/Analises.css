@@ -101,3 +101,24 @@ hr {
   margin-left: 1rem;
 }
 
+.graph-container {
+  width: 80%;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+
+  position: relative;
+  height: 200px;
+}
+
+@media (max-width: 768px) {
+  .graph-container {
+    width: 80%;
+    height: 200px;
+    padding: 1rem;
+  }
+}

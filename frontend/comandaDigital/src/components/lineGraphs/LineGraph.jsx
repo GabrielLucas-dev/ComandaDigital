@@ -34,22 +34,28 @@ function LineGraph() {
     });
 }, []);
 
-console.log(dados30dias);
+const datas = dados30dias.map((item) => new Date(item.data_abertura).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }))
+const saldo = dados30dias.map((item) => parseFloat(item.saldo_final))
+
   const formatData = {
-    labels: [
-        dados30dias.data_abertura
-    ],
+    labels: datas,
      datasets: [
         {
             label: "Últimos 30 Dias",
-            data: [dados30dias.saldo_final],
-            borderColor: '#31782d'
+            data: saldo,
+            borderColor: '#31782d',
+            backgroundColor: '#31782d'
         }
      ]
   }
 
-  const options = {};
-//   const data = {};
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top' },
+    },
+  };
 
   return (
     <>
