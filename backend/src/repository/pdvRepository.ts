@@ -15,7 +15,6 @@ export async function closePdv(saldo_final: number, id: number){
     status_pdv = 'fechado'
     WHERE id_pdv = ?`
     const pdv = await db.query(sql, [saldo_final, id])
-    console.log(id)
     
     return pdv
 }

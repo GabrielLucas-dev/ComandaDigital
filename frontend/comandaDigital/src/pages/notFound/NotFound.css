@@ -1,0 +1,37 @@
+.container-notFound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    font-size: 1.4rem;
+    flex-direction: column;
+}
+
+.back-btn{
+    margin: 12px;
+}
+
+
+.icon-div img{
+    width: 80px;
+}
+
+.notFound-div{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.notFound-div p{
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+.notFound-div p span{
+    color: rgb(192, 47, 47);
+    font-weight: 700;
+}
+
+.warning-icon{
+    color: rgb(192, 47, 47);
+}
