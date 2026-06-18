@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "db": "tsx src/config/db_conn.ts"
+    "start": "tsx src/server.ts"
   },
   "keywords": [],
   "author": "",
