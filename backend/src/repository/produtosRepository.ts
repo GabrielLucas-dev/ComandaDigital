@@ -21,7 +21,6 @@ getProdutos()
     return result
 }).catch(error => console.log(error))
 
-//FALTA PASSAR A CATEGORIA
 export async function postProduto(produto: any) {
   const sql = "INSERT INTO produtos (nome_produto, preco_produto, categoria_id) VALUES (?, ?, ?)";
   const values = [produto.nome_produto, produto.preco_produto, produto.categoria_id];
