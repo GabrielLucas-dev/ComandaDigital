@@ -84,3 +84,17 @@
 .submit-login{
     margin-top: 2rem;
 }
+
+.login-error{
+  border: 1px solid rgb(164, 22, 22);
+  background-color: rgba(191, 44, 44, 0.4);
+  padding: 4px 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.login-error p{
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgb(114, 11, 11);
+}
