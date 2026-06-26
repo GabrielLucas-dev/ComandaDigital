@@ -113,7 +113,7 @@ hr {
   box-shadow: 0 12px 30px rgba(28, 71, 31, 0.1);
   box-sizing: border-box;
   position: relative;
-  height: 290px;
+  height: 270px;
   overflow: hidden;
 }
 
@@ -129,7 +129,7 @@ hr {
 @media (max-width: 768px) {
   .graph-container {
     width: 90%;
-    height: 280px;
+    height: 27 0px;
     padding: 1rem;
   }
 }
