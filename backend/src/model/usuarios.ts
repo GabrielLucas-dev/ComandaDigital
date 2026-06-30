@@ -1,6 +1,6 @@
-enum cargoUsuario{
-    funcionario,
-    gerente
+export enum cargoUsuario{
+    FUNCIONARIO = 'funcionario',
+    GERENTE = 'gerente'
 }
 
 export interface usuario{

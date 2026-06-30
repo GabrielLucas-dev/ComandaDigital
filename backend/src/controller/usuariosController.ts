@@ -15,6 +15,7 @@ export async function getUsuarioLogin(req: Request, res: Response) {
     try{
         const user = await usuariosService.getUsuarioLogin(email, senha);
         res.status(200).json(user)
+        console.log(req.body.cargo)
     } catch(error: any) {
         res.status(404).json({message: error.message})
     }

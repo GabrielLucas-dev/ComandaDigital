@@ -27,7 +27,6 @@ export async function closePdv(req: Request, res: Response){
 
 export async function getActivePdv(req: Request, res: Response) {
     const usuario_id = (req.usuario as any).id_usuario
-    console.log(req.usuario)
 
     try {
         const pdv = await pdvService.getActivePdv(usuario_id)

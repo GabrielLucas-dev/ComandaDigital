@@ -3,7 +3,7 @@ import * as pdvRepository from '../repository/pdvRepository.js'
 
 export async function createPdv(usuario_id: number, saldo_inicial: number) {
 
-    const existe = await pdvRepository.getActivePdv(usuario_id)
+    const existe = await pdvRepository.getActivePdv()
     console.log(existe)
     if(existe) {
         throw new Error("PDV de hoje já existe")
@@ -29,7 +29,7 @@ export async function closePdv(saldo_final: number, id: number){
 }
 
 export async function getActivePdv(id: number){
-    const pdv = await pdvRepository.getActivePdv(id)
+    const pdv = await pdvRepository.getActivePdv()
     return pdv
 }
 

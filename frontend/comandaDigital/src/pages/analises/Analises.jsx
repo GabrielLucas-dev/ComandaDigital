@@ -16,12 +16,10 @@ function Analises() {
   const [dataInicio, setDataInicio] = useState();
   const [dataFim, setDataFim] = useState();
 
-  
-
   useEffect(() => {
     api
       .get("/analises/30dias")
-      .then((res) => setAnalises30dias(res.data));
+      .then((res) => setAnalises30dias(res.data))
 
     api
       .get("/analises/gerais")
