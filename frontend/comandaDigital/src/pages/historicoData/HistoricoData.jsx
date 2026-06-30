@@ -13,7 +13,7 @@ function HistoricoData() {
   const dateURL = useParams();
 
   useEffect(() => {
-    api.get(`http://localhost:3031/vendas/${dateURL.data_venda}`)
+    api.get(`vendas/${dateURL.data_venda}`)
       .then((res) => setVendasData(res.data))
       .catch((error) => console.log(error));
   }, [dateURL]);
@@ -27,7 +27,7 @@ function HistoricoData() {
 
   const showDetails = async (venda, id) => {
     const res = await api.get(
-      `http://localhost:3031/itensVenda/detalhes/${id}`,
+      `/itensVenda/detalhes/${id}`,
     );
     setItensVenda(res.data);
     setVendaEsp(venda);

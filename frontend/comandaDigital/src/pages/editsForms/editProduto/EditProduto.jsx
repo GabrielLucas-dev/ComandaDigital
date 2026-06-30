@@ -16,11 +16,11 @@ function EditProduto() {
   });
 
   useEffect(() => {
-    api.get(`http://localhost:3031/produtos/${id_produto}`)
+    api.get(`/produtos/${id_produto}`)
     .then((res) => setForm(res.data))
     .catch((error) => console.log(error));
 
-    api.get("http://localhost:3031/categorias")
+    api.get("/categorias")
     .then((res) => setCategorias(res.data))
     .catch((error) => console.log(error));
   }, [id_produto]);
@@ -30,7 +30,7 @@ function EditProduto() {
   function handleEditSubmit(e) {
     e.preventDefault();
 
-    api.put(`http://localhost:3031/produtos/${id_produto}`, form)
+    api.put(`/produtos/${id_produto}`, form)
       .then((res) => {
         console.log(res.data)
 

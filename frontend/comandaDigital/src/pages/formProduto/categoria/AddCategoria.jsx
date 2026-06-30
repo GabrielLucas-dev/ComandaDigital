@@ -12,7 +12,7 @@ function AddCategoria() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    api.post('http://localhost:3031/categorias', {nome_categoria: nomeCategoria})
+    api.post('/categorias', {nome_categoria: nomeCategoria})
     .then(res => {
       console.log(res.data)
       navigate('/produtos/filterCategorias')

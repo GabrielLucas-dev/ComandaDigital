@@ -30,10 +30,6 @@ function FecharPdv() {
         }
         setPdvId(resPdv.data.id_pdv);
 
-        // console.log("Resumo OK", resResumo.data);
-
-        // TODO: criar endpoint GET /pdv/:id/resumo no backend
-        // que retorne total_vendas, quantidade_vendas, saldo_inicial e pagamentos agrupados
         const resResumo = await api.get(`/pdv/${resPdv.data.id_pdv}/resumo`);
         setResumo(resResumo.data);
         console.log(resResumo.data)

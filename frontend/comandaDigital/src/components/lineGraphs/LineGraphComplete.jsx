@@ -31,7 +31,7 @@ function LineGraphComplete() {
   useEffect(() => {
     //arrumar esse ID
     api
-      .get("http://localhost:3031/pdv/mensal/1")
+      .get("/pdv/mensal/1")
       .then((res) => setDadosMensais(res.data))
       .catch((error) => console.log(error));
   }, []);

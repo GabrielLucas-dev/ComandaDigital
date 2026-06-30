@@ -34,7 +34,7 @@ function LineGraph() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    api.get("http://localhost:3031/pdv/30dias").then((res) => {
+    api.get("/pdv/30dias").then((res) => {
       setDados30Dias(res.data);
     })
     .catch(error => {

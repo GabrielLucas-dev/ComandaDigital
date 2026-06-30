@@ -39,7 +39,7 @@ function ModalPagamento({ onClose, onConfirm, cart, setCart }) {
     };
 
     try {
-      const resVenda = await api.post("http://localhost:3031/vendas", {
+      const resVenda = await api.post("/vendas", {
         valor: venda.valor,
         forma_pagamento: venda.forma_pagamento,
       }
@@ -47,7 +47,7 @@ function ModalPagamento({ onClose, onConfirm, cart, setCart }) {
 
       const venda_id = resVenda.data[0].insertId;
 
-      api.post("http://localhost:3031/itensVenda", {
+      api.post("/itensVenda", {
         itens: venda.itens.map((item) => ({
           preco_unitario: item.preco_unitario,
           produto_id: item.id_produto,

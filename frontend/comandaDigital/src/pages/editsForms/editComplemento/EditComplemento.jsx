@@ -14,7 +14,7 @@ function EditComplemento () {
     const navigate = useNavigate()
 
     useEffect(() => {
-        api.get(`http://localhost:3031/complementos/${id_complemento}`)
+        api.get(`/complementos/${id_complemento}`)
         .then(res => setForm(res.data))
         .catch(error => console.log(error))
     }, [id_complemento])
@@ -22,7 +22,7 @@ function EditComplemento () {
     function handleEditSubmit(e) {
         e.preventDefault()
 
-        api.put(`http://localhost:3031/complementos/${id_complemento}`, form)
+        api.put(`/complementos/${id_complemento}`, form)
         .then(res => {
             console.log(res.data)
             navigate('/produtos/filterComplementos')

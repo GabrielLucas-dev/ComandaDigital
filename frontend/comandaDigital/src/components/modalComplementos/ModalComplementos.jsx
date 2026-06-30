@@ -11,7 +11,7 @@ function ModalComplementos({ onClose, onConfirm }) {
 
   useEffect(() => {
     api
-      .get("http://localhost:3031/complementos")
+      .get("/complementos")
       .then((res) => setComplementos(res.data))
       .catch((error) => console.log(error));
   }, []);                                        

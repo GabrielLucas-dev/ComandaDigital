@@ -20,16 +20,16 @@ function Analises() {
 
   useEffect(() => {
     api
-      .get("http://localhost:3031/analises/30dias")
+      .get("/analises/30dias")
       .then((res) => setAnalises30dias(res.data));
 
     api
-      .get("http://localhost:3031/analises/gerais")
+      .get("/analises/gerais")
       .then((res) => setAnalisesGerais(res.data));
 
     api
       .get(
-        `http://localhost:3031/analises/periodo?data_inicio=${dataInicio}&data_fim=${dataFim}`,
+        `/analises/periodo?data_inicio=${dataInicio}&data_fim=${dataFim}`,
       )
       .then((res) => setAnalisesPeriodo(res.data));
   }, [dataInicio, dataFim]);

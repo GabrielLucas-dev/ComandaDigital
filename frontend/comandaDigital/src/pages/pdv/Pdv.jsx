@@ -2,8 +2,8 @@ import { useAuth } from "../../hooks/useAuth";
 import "./Pdv.css";
 import comandaDigital from "../../assets/comandaDigital_icon2.png";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../api/Api";
 
 function Pdv() {
   useAuth();
@@ -35,8 +35,8 @@ function Pdv() {
     setLoading(true);
     try {
       const saldo = parseFloat(saldoInicial.replace(",", ".")) || 0;
-      await axios.post(
-        "http://localhost:3031/pdv",
+      await api.post(
+        "/pdv",
         { saldo_inicial: saldo },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -49,7 +49,7 @@ function Pdv() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3031/pdv/active", {
+    api.get("/pdv/active", {
         headers: { 
             Authorization: `Bearer ${token}`
         }

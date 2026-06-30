@@ -12,7 +12,7 @@ function AddProduto() {
 
   useEffect(() => {
     api
-      .get("http://localhost:3031/categorias")
+      .get("/categorias")
       .then((res) => {
         setCategorias(res.data)
       })
@@ -27,7 +27,7 @@ function AddProduto() {
     e.preventDefault()
     if(selecionado === "selecione") return alert('Escolha alguma categoria!')
 
-    api.post('http://localhost:3031/produtos', {
+    api.post('/produtos', {
       nome_produto: produto,
       preco_produto: preco,
       categoria_id: selecionado

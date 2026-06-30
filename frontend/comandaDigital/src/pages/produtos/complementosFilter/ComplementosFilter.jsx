@@ -10,13 +10,13 @@ function ComplementosFilter() {
 
   useEffect(() => {
     api
-      .get("http://localhost:3031/complementos")
+      .get("/complementos")
       .then((res) => setComplementos(res.data))
       .catch((error) => console.log(error));
   }, []);
 
   const handleDelete = async (id_complemento) => {
-  api.delete(`http://localhost:3031/complementos/${id_complemento}`)
+  api.delete(`/complementos/${id_complemento}`)
     .then(res => console.log(res.data))
     .catch(error => console.log(error))
 

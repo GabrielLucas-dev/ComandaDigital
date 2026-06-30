@@ -14,11 +14,11 @@ function Historico() {
   const [itensVenda, setItensVenda] = useState([])
 
   useEffect(() => {
-    api.get("http://localhost:3031/vendas")
+    api.get("/vendas")
       .then((res) => setVendas(res.data))
       .catch((error) => console.log(error));
 
-      api.get("http://localhost:3031/itensVenda/detalhes/:venda_id")
+      api.get("/itensVenda/detalhes/:venda_id")
       .then(res => setItensVenda(res.data))
   }, []);
 
@@ -27,7 +27,7 @@ function Historico() {
   const [isOpen, setIsOpen] = useState(false);
 
   const showDetails = async (venda, id) => {
-    const res = await api.get(`http://localhost:3031/itensVenda/detalhes/${id}`)
+    const res = await api.get(`/itensVenda/detalhes/${id}`)
     setItensVenda(res.data)
     setVendaEsp(venda)
     setIsOpen(true);

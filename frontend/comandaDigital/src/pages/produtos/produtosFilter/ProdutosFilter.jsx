@@ -10,12 +10,12 @@ function ProdutosFilter() {
     const [produtos, setProdutos] = useState([])
 
     useEffect(() => {
-        api.get('http://localhost:3031/produtos')
+        api.get('/produtos')
         .then(res => setProdutos(res.data))
     }, [])
 
     const handleDelete = async (id_produto) => {
-      await api.delete(`http://localhost:3031/produtos/${id_produto}`)
+      await api.delete(`/produtos/${id_produto}`)
       .then(res => console.log(res.data))
       .catch(error => console.log(error))
 

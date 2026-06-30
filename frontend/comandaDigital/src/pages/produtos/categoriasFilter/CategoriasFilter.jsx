@@ -9,13 +9,13 @@ function CategoriasFilter() {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    api.get("http://localhost:3031/categorias")
+    api.get("/categorias")
       .then((res) => setCategorias(res.data))
       .catch((error) => console.log(error));
   }, []);
 
   const handleDelete = async (id_categoria) => {
-    api.delete(`http://localhost:3031/categorias/${id_categoria}`)
+    api.delete(`/categorias/${id_categoria}`)
     .then(res => console.log(res.data))
     .catch(error => console.log(error))
 

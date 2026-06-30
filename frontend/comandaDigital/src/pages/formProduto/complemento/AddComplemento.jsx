@@ -13,7 +13,7 @@ function AddComplemento() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    api.post('http://localhost:3031/complementos', {nome_complemento: nomeComplemento, preco: precoComplemento})
+    api.post('/complementos', {nome_complemento: nomeComplemento, preco: precoComplemento})
     .then(res => {
       console.log(res.data)
       navigate('/produtos/filterComplementos')

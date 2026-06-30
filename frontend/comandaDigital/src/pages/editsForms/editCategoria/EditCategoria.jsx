@@ -13,14 +13,14 @@ function EditCategoria() {
     const navigate = useNavigate() 
 
     useEffect(() => {
-        api.get(`http://localhost:3031/categorias/${id_categoria}`)
+        api.get(`/categorias/${id_categoria}`)
         .then(res => setForm(res.data))
     }, [id_categoria])
 
     function handleEditSubmit(e){
         e.preventDefault()
 
-        api.put(`http://localhost:3031/categorias/${id_categoria}`, form)
+        api.put(`/categorias/${id_categoria}`, form)
         .then(res => {
             console.log(res.data)
             navigate('/produtos/filterCategorias')
