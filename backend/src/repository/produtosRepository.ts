@@ -7,6 +7,7 @@ export async function getProdutos(): Promise<produtos[]> {
     p.id_produto,
     p.nome_produto,
     p.preco_produto,
+    p.requer_complemento,
     c.nome_categoria
   FROM produtos p
   JOIN categorias c ON p.categoria_id = c.id_categoria
@@ -22,8 +23,8 @@ getProdutos()
 }).catch(error => console.log(error))
 
 export async function postProduto(produto: any) {
-  const sql = "INSERT INTO produtos (nome_produto, preco_produto, categoria_id) VALUES (?, ?, ?)";
-  const values = [produto.nome_produto, produto.preco_produto, produto.categoria_id];
+  const sql = "INSERT INTO produtos (nome_produto, preco_produto, categoria_id, requer_complemento) VALUES (?, ?, ?, ?)";
+  const values = [produto.nome_produto, produto.preco_produto, produto.categoria_id, produto.requer_complemento];
 
   const result = await db.query(sql, values);
   return result;

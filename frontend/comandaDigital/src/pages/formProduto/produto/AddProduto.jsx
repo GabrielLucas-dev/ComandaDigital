@@ -8,35 +8,36 @@ function AddProduto() {
   useAuth();
 
   const [categorias, setCategorias] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
       .get("/categorias")
       .then((res) => {
-        setCategorias(res.data)
+        setCategorias(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   const [selecionado, setSelecionado] = useState();
-  const [produto, setProduto] = useState('')
-  const [preco, setPreco] = useState()
+  const [produto, setProduto] = useState("");
+  const [preco, setPreco] = useState();
+  const [requerComplemento, setRequerComplemento] = useState(null);
+  console.log(requerComplemento);
 
   function handleSubmit(e) {
-    e.preventDefault()
-    if(selecionado === "selecione") return alert('Escolha alguma categoria!')
+    e.preventDefault();
+    if (selecionado === "selecione") return alert("Escolha alguma categoria!");
 
-    api.post('/produtos', {
-      nome_produto: produto,
-      preco_produto: preco,
-      categoria_id: selecionado
-    })
-    .then(res => {
-      console.log(res.data)
-      navigate('/produtos/filterProdutos')
-    })
-    .catch(error => console.log(error))
+    api
+      .post("/produtos", {
+        nome_produto: produto,
+        preco_produto: preco,
+        categoria_id: selecionado,
+        requer_complemento: requerComplemento,
+      })
+      .then(navigate("/produtos/filterProdutos"))
+      .catch((error) => console.log(error));
   }
 
   return (
@@ -56,30 +57,52 @@ function AddProduto() {
             <div className="form-add">
               <div className="add-layout">
                 <label>Produto</label>
-                <input type="text" required placeholder="EX: Açaí 300ml" onChange={(e) => setProduto(e.target.value)} />
+                <input
+                  type="text"
+                  required
+                  placeholder="EX: Açaí 300ml"
+                  onChange={(e) => setProduto(e.target.value)}
+                />
               </div>
               <div className="add-layout">
                 <label>Preço</label>
-                <input type="text" required placeholder="EX: 20,00" onChange={(e) => setPreco(e.target.value)} />
+                <input
+                  type="text"
+                  required
+                  placeholder="EX: 20,00"
+                  onChange={(e) => setPreco(e.target.value)}
+                />
               </div>
             </div>
-            <div className="category">
-              <div>
-                <label>Categoria</label>
+
+            <div className="div-requerComplemento">
+              <div className="category">
+                <div>
+                  <label>Categoria</label>
+                </div>
+                <select
+                  value={selecionado}
+                  onChange={(e) => setSelecionado(e.target.value)}
+                >
+                  <option value="selecione">Selecione...</option>
+                  {categorias.map((cat, i) => {
+                    return (
+                      <option key={i} value={cat.id_categoria}>
+                        {cat.nome_categoria}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
-              <select
-                value={selecionado}
-                onChange={(e) => setSelecionado(e.target.value)}
-              >
-                <option value="selecione">Selecione...</option>
-                {categorias.map((cat, i) => {
-                  return (
-                    <option key={i} value={cat.id_categoria}>
-                      {cat.nome_categoria}
-                    </option>
-                  );
-                })}
-              </select>
+              <div className="category">
+                <div>
+                  <label htmlFor="">Requer complemento?</label>
+                </div>
+                <select onChange={(e) => setRequerComplemento(e.target.value)}>
+                  <option value="0">Não</option>
+                  <option value="1">Sim</option>
+                </select>
+              </div>
             </div>
             <div className="add-btn">
               <input

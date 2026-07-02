@@ -5,9 +5,12 @@ import api from "../../api/Api";
 import { useAuth } from "../../hooks/useAuth";
 import LineGraph from "../../components/lineGraphs/LineGraph";
 import LineGraphComplete from '../../components/lineGraphs/LineGraphComplete'
+import { useNavigate } from 'react-router-dom'
 
 function Analises() {
   useAuth();
+
+  const navigate = useNavigate()
 
   const [analises30dias, setAnalises30dias] = useState(null);
   const [analisesGerais, setAnalisesGerais] = useState(null);
@@ -20,6 +23,12 @@ function Analises() {
     api
       .get("/analises/30dias")
       .then((res) => setAnalises30dias(res.data))
+      .catch(error => {
+        if(error.response?.status === 403){
+          alert("Acesso negado!")
+          navigate('/vendas')
+        }
+      })
 
     api
       .get("/analises/gerais")
@@ -30,7 +39,7 @@ function Analises() {
         `/analises/periodo?data_inicio=${dataInicio}&data_fim=${dataFim}`,
       )
       .then((res) => setAnalisesPeriodo(res.data));
-  }, [dataInicio, dataFim]);
+  }, [dataInicio, dataFim, navigate]);
 
   if (!analises30dias) return <p>Carregando...</p>;
   if (!analisesGerais) return <p>Carregando...</p>;

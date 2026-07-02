@@ -113,15 +113,16 @@
 
 .category{
     width: 100%;
-    
 }
 
 .category label{
     margin: 0 0.75rem;
     font-weight: 500;
+    
 }
 
 .category select{
+    width: 90%;
     margin: 0.1rem 0.75rem;
     padding: 0.25rem;
     border: 1px solid #fff;
@@ -132,4 +133,8 @@
 
 .category select:focus{
     border-color: var(--cor-fonte3);
+}
+
+.div-requerComplemento{
+    display: flex;
 }
