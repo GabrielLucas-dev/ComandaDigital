@@ -4,9 +4,9 @@ import { tokenAuth } from "../middleware/tokenAuthMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", findVendas);
+router.get("/", tokenAuth, findVendas);
 router.post("/", tokenAuth, insertVendas);
-router.get("/:data_venda", findVendasByData);
-router.get("/detalhes/:id_venda", findVendaById);
+router.get("/:data_venda", tokenAuth, findVendasByData);
+router.get("/detalhes/:id_venda", tokenAuth, findVendaById);
 
 export default router;
