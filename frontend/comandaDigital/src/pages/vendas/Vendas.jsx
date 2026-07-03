@@ -36,16 +36,8 @@ function Vendas() {
   // VERIFICAR SE O PRODUTO EXIGE COMPLEMENTO
   //==========================
 
-  //mais para frente tentar fazer isso dinamicamente, adicionando uma regra de negócio para isso
-  // const nessecitaComplemento = "Açaí";
-  // const verificaProduto = (produto) => {
-  //   return nessecitaComplemento.includes(produto.nome_categoria);
-  // };
-
   const verificaProduto = (p) => {
-    if(p.requer_complemento === 1){
-      return true
-    }
+    if(p.requer_complemento === 1) return true
     else return false
   }
 

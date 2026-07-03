@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Vendas from "./pages/vendas/Vendas";
 import Pdv from "./pages/pdv/Pdv";
 import Produtos from "./pages/produtos/Produtos";
@@ -25,11 +25,13 @@ import LineGraphComplete from "./components/lineGraphs/LineGraphComplete";
 import NotFound from "./pages/notFound/NotFound";
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
         <Routes>
 
+          <Route path="/" element={<Navigate to="/login" replace/>}/>
           <Route path="/login" element={<Login/>}/>
 
           <Route path="/pdv" element={<Pdv />} />
