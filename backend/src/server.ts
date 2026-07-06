@@ -23,5 +23,9 @@ app.use("/analises", analisesRoute)
 app.use("/usuarios", usuariosRoute)
 app.use("/pdv", pdvRoutes)
 
+app.get("/health", (_, res) => {
+    res.json({ message: "API funcionando" })
+})
+
 const PORT: number = 3031;
 app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
