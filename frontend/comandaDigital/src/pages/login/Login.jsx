@@ -3,6 +3,7 @@ import comandaDigital from "../../assets/comandaDigital_icon2.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/Api";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -22,6 +23,10 @@ function Login() {
         navigate("/pdv");
       })
       .catch((error) => {
+        if(axios.isAxiosError(error)){
+          console.log(error.response?.status)
+          console.log(error.response?.data)
+        }
         if (error.status === 404) setErrorMessage(true);
         return console.log(error);
       });
