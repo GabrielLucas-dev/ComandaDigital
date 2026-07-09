@@ -9,9 +9,11 @@ export async function getUsuarios(): Promise<usuario[]> {
 }
 
 export async function getUsuarioLogin(email: string): Promise<usuario> {
+    console.time("buscando user")
     const sql = "SELECT * FROM usuarios WHERE email = ?"
     const [result] = await db.query(sql, [email])
 
+    console.timeEnd("buscando user")
     return result[0] as usuario;
 }
 

@@ -27,7 +27,7 @@ function Login() {
           console.log(error.response?.status)
           console.log(error.response?.data)
         }
-        if (error.status === 404) setErrorMessage(true);
+        if (error.status === 401 || error.status === 404) setErrorMessage(true);
         return console.log(error);
       });
   }

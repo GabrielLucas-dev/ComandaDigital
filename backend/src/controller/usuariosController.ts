@@ -13,9 +13,10 @@ export async function getUsuarios(req: Request, res: Response) {
 export async function getUsuarioLogin(req: Request, res: Response) {
     const {email, senha} = req.body;
     try{
+        console.time("requisição login")
         const user = await usuariosService.getUsuarioLogin(email, senha);
         res.status(200).json(user)
-        console.log(req.body.cargo)
+        console.timeEnd("requisição login")
     } catch(error: any) {
         res.status(404).json({message: error.message})
     }
