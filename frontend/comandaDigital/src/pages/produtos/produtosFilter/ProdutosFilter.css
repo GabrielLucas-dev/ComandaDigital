@@ -4,7 +4,6 @@
   padding: 0 1rem;
 }
 
-/* ── header da tabela ── */
 .produtosFilter-header {
   border-bottom: 2px solid #d8d8d8;
   padding-bottom: 0.5rem;
@@ -18,11 +17,10 @@
   color: #999;
 }
 
-/* ── grid ── */
 .produtosFilter-header,
 .produtosFilter-content {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
   align-items: center;
 }
 
@@ -31,15 +29,14 @@
   padding: 0.25rem 0.5rem;
 }
 
-/* ── linha de produto ── */
 .produtosFilter-content {
   padding: 0.45rem 0;
-  border-bottom: 1px solid #f0f0f0;    /* 👈 separador sutil */
+  border-bottom: 1px solid #f0f0f0;    
   transition: background 0.15s ease;
 }
 
 .produtosFilter-content:hover {
-  background-color: #f7f7f7;           /* 👈 hover igual ao histórico */
+  background-color: #f7f7f7;           
 }
 
 .produtosFilter-content p {
@@ -51,13 +48,12 @@
   margin-top: 0.5rem;
 }
 
-/* ── botões ── */
 .exclude-button {
   margin-right: 0.5rem;
   padding: 4px 0.875rem;
   border-radius: 6px;
   border: none;
-  background-color: #fee2e2;           /* 👈 fundo suave em vez de vermelho sólido */
+  background-color: #fee2e2;           
   color: #c0392b;
   cursor: pointer;
   transition: .2s ease;
@@ -73,7 +69,7 @@
   padding: 4px 0.875rem;
   border-radius: 6px;
   border: none;
-  background-color: #e0e7ff;           /* 👈 mesmo tratamento no azul */
+  background-color: #e0e7ff;          
   color: #3730a3;
   cursor: pointer;
   transition: .2s ease;
@@ -86,6 +82,50 @@
 }
 
 .edit-link {
-  color: inherit;                      /* 👈 herda a cor do botão */
+  color: inherit;                      
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .produtosFilter-header {
+    display: none; 
+  }
+
+  .produtosFilter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.75rem;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+  }
+
+  .produtosFilter-content > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.15rem 0;
+  }
+
+  .produtosFilter-content > div::before {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .produtosFilter-content > div[data-label="Ações"] {
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .produtosFilter-content > div[data-label="Ações"]::before {
+    content: none; 
+  }
 }

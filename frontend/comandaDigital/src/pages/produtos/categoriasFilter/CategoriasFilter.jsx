@@ -27,9 +27,6 @@ function CategoriasFilter() {
       <section className="container-produtosFilter">
         <div className="produtosFilter-header">
           <div>
-            <h4>Id</h4>
-          </div>
-          <div>
             <h4>Nome</h4>
           </div>
           <div>
@@ -41,15 +38,24 @@ function CategoriasFilter() {
           {categorias.map((cat, i) => {
             return (
               <div className="produtosFilter-content" key={i}>
-                <div>
-                  <p>{cat.id_categoria}</p>
-                </div>
-                <div>
+                <div data-label="Categoria">
                   <p>{cat.nome_categoria}</p>
                 </div>
-                <div>
-                  <button className="exclude-button" onClick={() => handleDelete(cat.id_categoria)}>Excluir</button>
-                  <button className="edit-button"><Link className="edit-link" to={`/produtos/filterCategorias/editCategoria/${cat.id_categoria}`}>Editar</Link></button>
+                <div data-label="Ações">
+                  <button
+                    className="exclude-button"
+                    onClick={() => handleDelete(cat.id_categoria)}
+                  >
+                    Excluir
+                  </button>
+                  <button className="edit-button">
+                    <Link
+                      className="edit-link"
+                      to={`/produtos/filterCategorias/editCategoria/${cat.id_categoria}`}
+                    >
+                      Editar
+                    </Link>
+                  </button>
                 </div>
               </div>
             );

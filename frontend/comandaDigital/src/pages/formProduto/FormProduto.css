@@ -53,3 +53,9 @@
     border: 1px solid var(--cor-fonte3);
     color: var(--cor-fonte3);
 }
+
+@media(max-width: 768px){
+    .form-produto{
+        width: 50%;
+    }
+}

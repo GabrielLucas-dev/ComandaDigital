@@ -13,15 +13,15 @@ export async function getUsuarios(): Promise<usuario[]> {
 export async function getUsuarioLogin(email: string, senha: string) {
   if (!email || !senha) throw new Error("Info(s) faltando");
 
-  console.time("buscar user service")
+  // console.time("buscar user service")
   const user = await usuariosRepository.getUsuarioLogin(email);
   if (!user) throw new Error("Usuário não encontrado");
-  console.timeEnd("buscar user service")
+  // console.timeEnd("buscar user service")
 
-  console.time("compara senha")
+  // console.time("compara senha")
   const equals = await bcrypt.compare(senha, user.senha)
   if(!equals) throw new Error("Senha incorreta!")
-    console.timeEnd("compara senha")
+    // console.timeEnd("compara senha")
 
   const JWT_SECRET: string = process.env.JWT_SECRET!;
 

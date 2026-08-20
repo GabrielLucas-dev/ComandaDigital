@@ -29,9 +29,6 @@ function ComplementosFilter() {
       <section className="container-produtosFilter">
         <div className="produtosFilter-header">
           <div>
-            <h4>Id</h4>
-          </div>
-          <div>
             <h4>Categoria</h4>
           </div>
           <div>
@@ -46,18 +43,27 @@ function ComplementosFilter() {
           {complementos.map((comp, i) => {
             return (
               <div className="produtosFilter-content" key={i}>
-                <div>
-                  <p>{comp.id_complemento}</p>
-                </div>
-                <div>
+                <div data-label="Complemento">
                   <p>{comp.nome_complemento}</p>
                 </div>
-                <div>
+                <div data-label="Preço">
                   <p>{comp.preco}</p>
                 </div>
-                <div>
-                  <button className="exclude-button" onClick={() => handleDelete(comp.id_complemento)}>Excluir</button>
-                  <button className="edit-button"><Link className="edit-link" to={`/produtos/filterComplementos/editComplemento/${comp.id_complemento}`}>Editar</Link></button>
+                <div data-label="Ações">
+                  <button
+                    className="exclude-button"
+                    onClick={() => handleDelete(comp.id_complemento)}
+                  >
+                    Excluir
+                  </button>
+                  <button className="edit-button">
+                    <Link
+                      className="edit-link"
+                      to={`/produtos/filterComplementos/editComplemento/${comp.id_complemento}`}
+                    >
+                      Editar
+                    </Link>
+                  </button>
                 </div>
               </div>
             );

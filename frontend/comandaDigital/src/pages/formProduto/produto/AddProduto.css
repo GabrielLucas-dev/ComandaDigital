@@ -1,14 +1,16 @@
 .container-addProduto{
     width: 100vw;
-    height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.75rem; 
 }
 
 .inner-addProduto{
-    width: 30%;
-    height: 20%;
+    width: 40%;
+    min-height: 320px;
+    border: 1px solid red;
 }
 
 .add-title{
@@ -27,6 +29,7 @@
 .form-add{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .add-layout{
@@ -34,6 +37,7 @@
     flex-direction: column;
     width: 50%;
     margin: 0.5rem 0.75rem;
+    border: 1px solid red;
 }
 
 .add-layout label{
@@ -64,6 +68,7 @@
     flex-direction: column;
     width: 100%;
     margin: 0.5rem 0.75rem;
+    border: 1px solid red;
 }
 
 .add-layout label{
@@ -108,17 +113,19 @@
 .add-button{
     width: 95%;
     margin: 0 0.5rem;
-    
 }
 
 .category{
-    width: 100%;
+    width: 55%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .category label{
     margin: 0 0.75rem;
     font-weight: 500;
-    
 }
 
 .category select{
@@ -137,4 +144,11 @@
 
 .div-requerComplemento{
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+@media(max-width: 768px){
+
 }

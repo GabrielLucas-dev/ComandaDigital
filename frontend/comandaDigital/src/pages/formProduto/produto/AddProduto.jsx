@@ -94,16 +94,19 @@ function AddProduto() {
                   })}
                 </select>
               </div>
+              
               <div className="category">
                 <div>
                   <label htmlFor="">Requer complemento?</label>
                 </div>
+                
                 <select onChange={(e) => setRequerComplemento(e.target.value)}>
                   <option value="0">Não</option>
                   <option value="1">Sim</option>
                 </select>
               </div>
             </div>
+
             <div className="add-btn">
               <input
                 type="submit"
@@ -111,6 +114,7 @@ function AddProduto() {
                 className="button-padrao add-button"
               />
             </div>
+
           </form>
         </div>
       </section>

@@ -85,7 +85,7 @@ hr {
 }
 
 .search-box{
-  margin: 0 1rem 0 0;
+  margin: 0 1rem 1rem 0;
   height: auto;
 }
 
@@ -132,4 +132,28 @@ hr {
     height: 27 0px;
     padding: 1rem;
   }
+}
+
+.dataFim-error {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.dataFim-error div{
+  width: 80%;
+  border: 1px solid rgb(255, 0, 0);
+  background-color: #da2e2e;
+  padding: 8px;
+  display: flex;
+  border-radius: 8px;
+  color: #fff;
+  align-items: center;
+}
+.dataFim-error div p{
+  color: #fff;
+  font-weight: 100;
+  margin-left: 4px;
 }

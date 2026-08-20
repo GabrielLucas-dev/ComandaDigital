@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/Api";
 import axios from "axios";
+import Warning from "../../components/warning/Warning";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -69,8 +70,8 @@ function Login() {
           </form>
 
           {errorMessage ? (
-            <div className="login-error">
-              <p>E-mail e/ou senha incorreto(s)</p>
+            <div className="login-warning">
+              <Warning message={"Email e(ou) senha incorreto(s)"}/>
             </div>
           ) : (
             ""
