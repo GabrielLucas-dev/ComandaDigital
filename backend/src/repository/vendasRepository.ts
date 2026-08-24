@@ -2,7 +2,7 @@ import { db } from "../config/db_conn.js";
 import type { vendas } from "../model/vendas.js";
 
 export async function getVendas(): Promise<vendas[]> {
-  const sql = "SELECT * FROM vendas ORDER BY data_venda DESC";
+  const sql = `SELECT * FROM vendas ORDER BY data_venda DESC`;
   const [result] = await db.query(sql);
 
   return result as vendas[];

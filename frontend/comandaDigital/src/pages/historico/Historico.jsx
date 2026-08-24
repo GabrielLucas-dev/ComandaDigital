@@ -12,15 +12,22 @@ function Historico() {
   const [vendas, setVendas] = useState([]);
   const [vendaEsp, setVendaEsp] = useState([])
   const [itensVenda, setItensVenda] = useState([])
+  const [limit, setLimit] = useState(10)
+
+  console.log(limit)
+
+  let showVendas = vendas.slice(0, limit)
 
   useEffect(() => {
-    api.get("/vendas")
+    api.get("/vendas", {limit})
       .then((res) => setVendas(res.data))
       .catch((error) => console.log(error));
 
+      console.log("useEffect acionado")
+
       api.get("/itensVenda/detalhes/:venda_id")
       .then(res => setItensVenda(res.data))
-  }, []);
+  }, [limit]);
 
   const [date, setDate] = useState();
 
@@ -69,7 +76,7 @@ function Historico() {
               <h4>Pagamento</h4>
             </div>
 
-            {vendas.map((ven, i) => {
+            {showVendas.map((ven, i) => {
               return (
                 <div
                     className={`vendas-historico ${i % 2 === 0 ? "" : "bg-cinza"}`}
@@ -89,6 +96,17 @@ function Historico() {
                 );
             })}
             {isOpen ? <VendaDetails onClose={closeDetails} venda={vendaEsp} itens={itensVenda} /> : ""}
+          </div>
+          <div className="container-vendasNumber">
+            <div className="inner-vendasNumber">
+              {/* <p>mostrar vendas</p> */}
+              <select name="vendas-number" id="" onChange={(e) => setLimit(e.target.value)}>
+                <option value="10">10 vendas</option>
+                <option value="20">20 vendas</option>
+                <option value="50">50 vendas</option>
+                <option value={vendas.length}>Todas</option>
+              </select>
+            </div>
           </div>
         </div>
       </section>

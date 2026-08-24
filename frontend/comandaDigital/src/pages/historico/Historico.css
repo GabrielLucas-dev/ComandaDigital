@@ -123,3 +123,16 @@
     width: 95%;
   }
 }
+
+.container-vendasNumber{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.inner-vendasNumber{
+  width: 70%;
+  display: flex;
+  justify-content: end;
+  /* gap: 12px; */
+}
