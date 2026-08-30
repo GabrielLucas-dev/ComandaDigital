@@ -5,6 +5,7 @@ import api from "../../api/Api";
 import Cart from "../../components/cart/Cart";
 import ModalComplementos from "../../components/modalComplementos/ModalComplementos";
 import { useAuth } from "../../hooks/useAuth";
+import MoreInfos from "../../components/moreInfos/MoreInfos";
 
 function Vendas() {
   useAuth();
@@ -86,12 +87,16 @@ function Vendas() {
     ? produtos.filter((p) => p.nome_categoria === categoriaAtiva) 
     : produtos;
     const produtosFiltradosText = produtosFiltrados.filter((p) => produtosText ? p.nome_produto.includes(produtosText) : <p>Nada encotrado</p>)   
-  
+
+    const [isOpenInfos, setIsOpenInfos] = useState(false)
+    const toggleInfos = () => {
+      setIsOpenInfos((prev) => !prev)
+    }
 
   return (
     <>
       <section className="container-vendas">
-        <Sidebar />
+        <Sidebar onToggleInfos={toggleInfos} />
 
         <div className="teste">
           <div className="vendas-header">
@@ -174,6 +179,12 @@ function Vendas() {
           <Cart cart={cart} onRemove={removeProd} setCart={setCart} />
         </div>
       </section>
+
+      <div>
+          {isOpenInfos && (
+              <MoreInfos onClose={() => setIsOpenInfos(false)}/> 
+          )}
+      </div>
     </>
   );
 }

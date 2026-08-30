@@ -131,8 +131,52 @@
 }
 
 .inner-vendasNumber{
-  width: 70%;
+  width: 65%;
   display: flex;
   justify-content: end;
   /* gap: 12px; */
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.select-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 15px;
+  color: var(--cor-texto-suave);
+  pointer-events: none;
+}
+
+.select-chevron {
+  position: absolute;
+  right: 8px;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  pointer-events: none;
+}
+
+.select-vendas {
+  appearance: none;
+  border: 0.5px solid var(--cor-borda);
+  border-radius: 0.5rem;
+  color: var(--cor-texto);
+  font-size: 13px;
+  padding: 0 2rem 0 2rem;
+  height: 34px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.select-vendas:hover {
+  border-color: var(--cor-texto-suave);
+}
+
+.select-vendas:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(91, 91, 246, 0.12);
 }

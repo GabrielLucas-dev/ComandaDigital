@@ -10,23 +10,23 @@ function Historico() {
   useAuth();
 
   const [vendas, setVendas] = useState([]);
-  const [vendaEsp, setVendaEsp] = useState([])
-  const [itensVenda, setItensVenda] = useState([])
-  const [limit, setLimit] = useState(10)
+  const [vendaEsp, setVendaEsp] = useState([]);
+  const [itensVenda, setItensVenda] = useState([]);
+  const [limit, setLimit] = useState(10);
 
-  console.log(limit)
-
-  let showVendas = vendas.slice(0, limit)
+  let showVendas = vendas.slice(0, limit);
 
   useEffect(() => {
-    api.get("/vendas", {limit})
+    api
+      .get("/vendas", { limit })
       .then((res) => setVendas(res.data))
       .catch((error) => console.log(error));
 
-      console.log("useEffect acionado")
+    console.log("useEffect acionado");
 
-      api.get("/itensVenda/detalhes/:venda_id")
-      .then(res => setItensVenda(res.data))
+    api
+      .get("/itensVenda/detalhes/:venda_id")
+      .then((res) => setItensVenda(res.data));
   }, [limit]);
 
   const [date, setDate] = useState();
@@ -34,9 +34,9 @@ function Historico() {
   const [isOpen, setIsOpen] = useState(false);
 
   const showDetails = async (venda, id) => {
-    const res = await api.get(`/itensVenda/detalhes/${id}`)
-    setItensVenda(res.data)
-    setVendaEsp(venda)
+    const res = await api.get(`/itensVenda/detalhes/${id}`);
+    setItensVenda(res.data);
+    setVendaEsp(venda);
     setIsOpen(true);
   };
 
@@ -44,10 +44,15 @@ function Historico() {
     setIsOpen(false);
   };
 
+  const [isOpenInfos, setIsOpenInfos] = useState(false)
+    const toggleInfos = () => {
+      setIsOpenInfos((prev) => !prev)
+    }
+
   return (
     <>
       <section className="container-historico">
-        <Sidebar />
+        <Sidebar onToggleInfos={toggleInfos}/>
         <div className="inner-historico">
           <div className="header-historico">
             <div>
@@ -61,8 +66,13 @@ function Historico() {
                 className="date-historico"
                 onChange={(e) => setDate(e.target.value)}
               />
-              <button className={date ? "button-padrao" : "button-padrao disabled"}>
-                <Link to={date ? `/historico/${date}` : ''} className={date ? "infos-link" : "infos-link disabled"}>
+              <button
+                className={date ? "button-padrao" : "button-padrao disabled"}
+              >
+                <Link
+                  to={date ? `/historico/${date}` : ""}
+                  className={date ? "infos-link" : "infos-link disabled"}
+                >
                   Procurar
                 </Link>
               </button>
@@ -79,37 +89,58 @@ function Historico() {
             {showVendas.map((ven, i) => {
               return (
                 <div
-                    className={`vendas-historico ${i % 2 === 0 ? "" : "bg-cinza"}`}
-                    key={i}
+                  className={`vendas-historico ${i % 2 === 0 ? "" : "bg-cinza"}`}
+                  key={i}
+                >
+                  <p>{ven.data_venda.split("T")[0]}</p>
+                  <p>{ven.data_venda.split("T")[1].split(".")[0]}</p>
+                  <p>R${ven.valor}</p>
+                  <p>{ven.forma_pagamento}</p>
+                  <button
+                    className="button-padrao2"
+                    onClick={() => showDetails(ven, ven.id_venda)}
                   >
-                    <p>{ven.data_venda.split("T")[0]}</p>
-                    <p>{ven.data_venda.split("T")[1].split(".")[0]}</p>
-                    <p>R${ven.valor}</p>
-                    <p>{ven.forma_pagamento}</p>
-                    <button
-                      className="button-padrao2"
-                      onClick={() => showDetails(ven, ven.id_venda)}
-                    >
-                      Detalhes
-                    </button>
-                  </div>
-                );
+                    Detalhes
+                  </button>
+                </div>
+              );
             })}
-            {isOpen ? <VendaDetails onClose={closeDetails} venda={vendaEsp} itens={itensVenda} /> : ""}
+            {isOpen ? (
+              <VendaDetails
+                onClose={closeDetails}
+                venda={vendaEsp}
+                itens={itensVenda}
+              />
+            ) : (
+              ""
+            )}
           </div>
           <div className="container-vendasNumber">
             <div className="inner-vendasNumber">
-              {/* <p>mostrar vendas</p> */}
-              <select name="vendas-number" id="" onChange={(e) => setLimit(e.target.value)}>
-                <option value="10">10 vendas</option>
-                <option value="20">20 vendas</option>
-                <option value="50">50 vendas</option>
-                <option value={vendas.length}>Todas</option>
-              </select>
+              <div className="select-wrapper">
+                <span className="select-icon">☰</span>
+                <select
+                  className="select-vendas"
+                  name="vendas-number"
+                  onChange={(e) => setLimit(e.target.value)}
+                >
+                  <option value="10">Últimas 10 vendas</option>
+                  <option value="20">Últimas 20 vendas</option>
+                  <option value="50">Últimas 50 vendas</option>
+                  <option value={vendas.length}>Todas</option>
+                </select>
+                <span className="select-chevron">▾</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      <div>
+          {isOpenInfos && (
+              <MoreInfos onClose={() => setIsOpenInfos(false)}/> 
+          )}
+      </div>
     </>
   );
 }

@@ -2,16 +2,22 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Produtos.css";
 import { useAuth } from "../../hooks/useAuth";
+import { useState } from "react";
 
 function Produtos() {
   useAuth()
+
+  const [isOpenInfos, setIsOpenInfos] = useState(false)
+      const toggleInfos = () => {
+        setIsOpenInfos((prev) => !prev)
+      }
 
   const getClass = ({isActive}) => isActive ? 'li-options active2' : 'li-options'
   
   return (
     <>
       <section className="container-produtos">
-        <Sidebar />
+        <Sidebar onToggleInfos={toggleInfos} />
         <div className="inner-produtos">
           <div className="header-produtos">
             <div>
@@ -42,6 +48,12 @@ function Produtos() {
           </div>
         </div>
       </section>
+
+      <div>
+          {isOpenInfos && (
+              <MoreInfos onClose={() => setIsOpenInfos(false)}/> 
+          )}
+      </div>
     </>
   );
 }

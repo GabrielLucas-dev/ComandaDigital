@@ -6,8 +6,6 @@ import { useAuth } from "../../hooks/useAuth";
 import LineGraph from "../../components/lineGraphs/LineGraph";
 import LineGraphComplete from "../../components/lineGraphs/LineGraphComplete";
 import { useNavigate } from "react-router-dom";
-import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Warning from "../../components/warning/Warning";
 
 function Analises() {
@@ -46,10 +44,15 @@ function Analises() {
 
   const dataFMenorDataI = dataFim < dataInicio;
 
+  const [isOpenInfos, setIsOpenInfos] = useState(false)
+    const toggleInfos = () => {
+      setIsOpenInfos((prev) => !prev)
+    }
+
   return (
     <>
       <section className="container-analises">
-        <Sidebar />
+        <Sidebar onToggleInfos={toggleInfos}/>
         <div className="inner-analises">
           <div className="header-analises">
             <h2>Análises</h2>
@@ -301,6 +304,12 @@ function Analises() {
           )}
         </div>
       </section>
+
+      <div>
+          {isOpenInfos && (
+              <MoreInfos onClose={() => setIsOpenInfos(false)}/> 
+          )}
+      </div>
     </>
   );
 }
