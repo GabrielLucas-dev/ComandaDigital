@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import VendaDetails from "../../components/vendaDetails/VendaDetails";
 import { useAuth } from "../../hooks/useAuth";
+import MoreInfos from "../../components/moreInfos/MoreInfos";
 
 function HistoricoData() {
   useAuth();
@@ -38,10 +39,15 @@ function HistoricoData() {
     setIsOpen(false);
   };
 
+  const [isOpenInfos, setIsOpenInfos] = useState(false)
+    const toggleInfos = () => {
+      setIsOpenInfos((prev) => !prev)
+    }
+
   return (
     <>
       <section className="container-historico">
-        <Sidebar />
+        <Sidebar onToggleInfos={toggleInfos}/>
         <div className="inner-historico">
           <div className="header-historico">
             <div>
@@ -113,6 +119,8 @@ function HistoricoData() {
           </div>
         </div>
       </section>
+
+      {isOpenInfos ? <MoreInfos onClose={() => setIsOpenInfos(false)} /> : "" }
     </>
   );
 }

@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./Produtos.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
+import MoreInfos from "../../components/moreInfos/MoreInfos";
 
 function Produtos() {
   useAuth()
@@ -13,6 +14,7 @@ function Produtos() {
       }
 
   const getClass = ({isActive}) => isActive ? 'li-options active2' : 'li-options'
+  
   
   return (
     <>

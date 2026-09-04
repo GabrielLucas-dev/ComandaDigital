@@ -7,6 +7,7 @@ import LineGraph from "../../components/lineGraphs/LineGraph";
 import LineGraphComplete from "../../components/lineGraphs/LineGraphComplete";
 import { useNavigate } from "react-router-dom";
 import Warning from "../../components/warning/Warning";
+import MoreInfos from "../../components/moreInfos/MoreInfos";
 
 function Analises() {
   useAuth();

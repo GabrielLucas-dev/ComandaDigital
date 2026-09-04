@@ -52,7 +52,7 @@ function Sidebar({ onToggleInfos }) {
               </NavLink>
             </li>
             <li>
-              <button onClick={onToggleInfos}>
+              <button onClick={onToggleInfos} className="li-infos">
                 <FontAwesomeIcon icon={faCircleInfo} />
               </button>
             </li>

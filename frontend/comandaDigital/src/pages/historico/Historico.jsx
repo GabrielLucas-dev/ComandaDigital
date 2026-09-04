@@ -5,6 +5,7 @@ import api from "../../api/Api";
 import { Link } from "react-router-dom";
 import VendaDetails from "../../components/vendaDetails/VendaDetails";
 import { useAuth } from "../../hooks/useAuth";
+import MoreInfos from "../../components/moreInfos/MoreInfos";
 
 function Historico() {
   useAuth();
